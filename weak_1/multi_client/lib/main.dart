@@ -40,7 +40,7 @@ void finalMessage(double subTotal,double subTax,double discount,double deliveryF
   SubTotalAfterTax = calculateSubTotalAfterTax(subTax, subTotal);
   subTotalAfterDiscount = calculateDiscount(discount, SubTotalAfterTax);
   print("--------------------");
-  print("Total amount to pay: ${total(subTotalAfterDiscount, deliveryFee)}");
+  print("Total amount to pay: ${total(subTotalAfterDiscount, deliveryFee).toStringAsFixed(2)}");
   print("Thank you for shopping with us, $name!");
     print("-------------------------------------\n\n\n");
 
@@ -49,16 +49,16 @@ void finalMessage(double subTotal,double subTax,double discount,double deliveryF
 double deliveryMessage(){
   double distance=0;
   distance = calculateDeliveryDistance();
-  print("Delivery fee:\$${calculateDeliveryFee(distance)}");
+  print("Delivery fee:\$${calculateDeliveryFee(distance).toStringAsFixed(2)}");
   return calculateDeliveryFee(distance);
 }
 
 double  firstMessage(double subTotal,double discount,double taxPersentage){
   double subTax;
-  print("Subtotal: \$$subTotal");
+  print("Subtotal: \$${subTotal.toStringAsFixed(2)}");
   subTax = CalculateTax(taxPersentage,subTotal);
-  print("Tax (${taxPersentage.toInt()}%): \$$subTax");
-  print("Discount: \$$discount");
+  print("Tax (${taxPersentage.toInt()}%): \$${subTax.toStringAsFixed(2)}");
+  print("Discount: \$${discount.toStringAsFixed(2)}");
 
   return subTax;
 }
