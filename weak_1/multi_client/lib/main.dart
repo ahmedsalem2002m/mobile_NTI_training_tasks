@@ -67,7 +67,7 @@ double total(double subTotalAfterDiscount,double deliveryFee){
   return subTotalAfterDiscount+deliveryFee;
 }
 
-double calculateSubTotalAfterTax(double subTax,subTotal){
+double calculateSubTotalAfterTax(double subTax, double subTotal){
   return subTax + subTotal;
 }
 
