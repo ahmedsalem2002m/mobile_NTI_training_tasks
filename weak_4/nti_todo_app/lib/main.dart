@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nti_todo_app/core/utils/colors.dart';
+import 'features/splash/view/view/splash_page.dart';
 
 void main(){
   runApp(MyApp());
@@ -9,9 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Center(child: Text("Ahmed")),
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColors.background
       ),
+      debugShowCheckedModeBanner: false,
+      home: SplashView()
     );
   }
 }
