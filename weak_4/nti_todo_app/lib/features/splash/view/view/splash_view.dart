@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:nti_todo_app/core/utils/AppAssets.dart';
+import 'package:nti_todo_app/core/utils/app_assets.dart';
 
 import '../../../lets_start/view/view/lets_start_view.dart';
 

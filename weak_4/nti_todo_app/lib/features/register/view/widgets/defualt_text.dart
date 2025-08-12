@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nti_todo_app/core/utils/colors.dart';
+import 'package:nti_todo_app/core/utils/app_colors.dart';
 
 class DefaultText extends StatelessWidget {
   DefaultText({super.key,required this.text_1,required this.text_2,this.onTap});

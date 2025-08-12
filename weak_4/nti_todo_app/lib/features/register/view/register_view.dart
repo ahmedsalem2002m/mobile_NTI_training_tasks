@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:nti_todo_app/core/utils/AppAssets.dart';
+import 'package:nti_todo_app/core/utils/app_assets.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 
