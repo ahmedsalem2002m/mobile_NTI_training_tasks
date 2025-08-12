@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nti_todo_app/core/utils/AppAssets.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 
@@ -32,42 +34,54 @@ class _RegisterViewState extends State<RegisterView> {
                 child: Column(
                   spacing: 8,
                   children: [
-                    DefaultFormField(
-                      controller: password,
-                      hintText: "Username",
-                      prefixIcon: Icon(Icons.person_outline),
-                    ),
-                    DefaultFormField(
-                      obscureText: lock_1,
-                      suffixIcon: GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            lock_1 = !lock_1;
-                          });
-                        },
-                          child: Icon(lock_1 ? Icons.lock_outline:Icons.lock_open_outlined)),
-                      controller: userName,
-                      hintText: "Password",
-                      prefixIcon: Icon(Icons.key_outlined),
-                    ),
-                    DefaultFormField(
-                      obscureText: lock_2,
-                      controller: confirmPassword,
-                      suffixIcon: GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            lock_2 = !lock_2;
-                          });
-                        },
-                          child: Icon(lock_2 ? Icons.lock_outlined:Icons.lock_open_outlined)),
-                      hintText: "Confirm Password",
-                      prefixIcon: Icon(Icons.key_outlined),
-                    ),
-                    SizedBox(height: 4),
-                    DefaultBtn(onPressed: () {}, text: "Register"),
-                    DefaultText(text_2: "Login",text_1: "Already",onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginView()));
-                    },),
+                  DefaultFormField(
+                  controller: password,
+                  hintText: "Username",
+                  prefixIcon: IconButton(onPressed: null,
+                      icon: SvgPicture.asset(AppAssets.profileIcon)),
+                ),
+                DefaultFormField(
+                  obscureText: lock_1,
+                  suffixIcon: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          lock_1 = !lock_1;
+                        });
+                      },
+                      child: lock_1
+                          ? IconButton(onPressed: null,
+                          icon: SvgPicture.asset(AppAssets.lockIcon))
+                          : IconButton(onPressed: null,
+                          icon: SvgPicture.asset(AppAssets.unlockIcon))),
+                  controller: userName,
+                  hintText: "Password",
+                  prefixIcon: IconButton(onPressed: null,
+                      icon: SvgPicture.asset(AppAssets.keyIcon)),
+                ),
+                DefaultFormField(
+                  obscureText: lock_2,
+                  controller: confirmPassword,
+                  suffixIcon: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        lock_2 = !lock_2;
+                      });
+                    },
+                    child: lock_2
+                        ? IconButton(onPressed: null,
+                        icon: SvgPicture.asset(AppAssets.lockIcon))
+                        : IconButton(onPressed: null,
+                        icon: SvgPicture.asset(AppAssets.unlockIcon))),
+                    hintText: "Confirm Password",
+                    prefixIcon: IconButton(onPressed: null,
+                        icon: SvgPicture.asset(AppAssets.keyIcon)),
+                  ),
+                  SizedBox(height: 4),
+                  DefaultBtn(onPressed: () {}, text: "Register"),
+                  DefaultText(text_2: "Login", text_1: "Already", onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => LoginView()));
+                  },),
                   ],
                 ),
               ),

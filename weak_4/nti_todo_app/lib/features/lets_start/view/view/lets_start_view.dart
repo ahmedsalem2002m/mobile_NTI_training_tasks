@@ -3,8 +3,8 @@ import 'package:nti_todo_app/core/utils/AppAssets.dart';
 
 import '../../../register/view/register_view.dart';
 
-class LetsStartPage extends StatelessWidget {
-  const LetsStartPage({super.key});
+class LetsStartView extends StatelessWidget {
+  const LetsStartView({super.key});
 
   @override
   Widget build(BuildContext context) {

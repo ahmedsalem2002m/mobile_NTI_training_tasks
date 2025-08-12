@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nti_todo_app/core/utils/colors.dart';
-import 'features/splash/view/view/splash_page.dart';
+import 'features/splash/view/view/splash_view.dart';
 
 void main(){
   runApp(MyApp());
