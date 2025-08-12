@@ -5,7 +5,7 @@ import 'package:nti_todo_app/features/register/view/register_view.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 
 import '../../../../core/widgets/default_btn.dart';
-import '../../../core/utils/AppAssets.dart';
+import '../../../core/utils/app_assets.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({super.key});

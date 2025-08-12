@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../utils/colors.dart';
+import '../utils/app_colors.dart';
 
 class DefaultBtn extends StatelessWidget {
   const DefaultBtn({super.key, required this.onPressed, required this.text});
