@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
 import 'package:nti_todo_app/features/register/view/register_view.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 
 import '../../../../core/widgets/default_btn.dart';
+import '../../../core/utils/AppAssets.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({super.key});
@@ -37,7 +39,8 @@ class _LoginViewState extends State<LoginView> {
                     DefaultFormField(
                       controller: password,
                       hintText: "Username",
-                      prefixIcon: Icon(Icons.person_outline),
+                      prefixIcon: IconButton(onPressed: null,
+                          icon: SvgPicture.asset(AppAssets.profileIcon)),
                     ),
                     DefaultFormField(
                       obscureText: lock_1,
@@ -47,10 +50,15 @@ class _LoginViewState extends State<LoginView> {
                               lock_1 = !lock_1;
                             });
                           },
-                          child: Icon(lock_1 ? Icons.lock_outline:Icons.lock_open_outlined)),
+                          child: lock_1
+                              ? IconButton(onPressed: null,
+                              icon: SvgPicture.asset(AppAssets.lockIcon))
+                              : IconButton(onPressed: null,
+                              icon: SvgPicture.asset(AppAssets.unlockIcon))),
                       controller: userName,
                       hintText: "Password",
-                      prefixIcon: Icon(Icons.key_outlined),
+                      prefixIcon: IconButton(onPressed: null,
+                          icon: SvgPicture.asset(AppAssets.keyIcon)),
                     ),
                     SizedBox(height: 4),
                     DefaultBtn(onPressed: () {}, text: "Login"),
