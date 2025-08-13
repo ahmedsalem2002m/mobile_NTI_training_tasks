@@ -3,4 +3,5 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppPaddings{
   static var defaultHomePadding = EdgeInsets.symmetric(horizontal: 20.0.w);
+  static var defaultSecondHomePadding = EdgeInsets.symmetric(horizontal:  10.0.w);
 }
