@@ -14,4 +14,11 @@ abstract class AppAssets
   static const String work = '${_iconPath}work.svg';
   static const String home = '${_iconPath}home.svg';
   static const String personal = '${_iconPath}personal.svg';
+
+  static const String personalColor = '${_iconPath}personal_color.svg';
+  static const String workColor = '${_iconPath}work_color.svg';
+  static const String homeColor = '${_iconPath}home_color.svg';
+
+  static const String addIcon = '${_iconPath}Paper Plus - Iconly Pro.svg';
+
 }
