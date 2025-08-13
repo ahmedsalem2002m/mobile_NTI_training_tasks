@@ -5,7 +5,9 @@ import 'package:nti_todo_app/features/register/view/register_view.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 
 import '../../../../core/widgets/default_btn.dart';
+import '../../../core/helper/my_navigator.dart';
 import '../../../core/utils/app_assets.dart';
+import '../../home/view/home_view.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({super.key});
@@ -61,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                           icon: SvgPicture.asset(AppAssets.keyIcon)),
                     ),
                     SizedBox(height: 4),
-                    DefaultBtn(onPressed: () {}, text: "Login"),
+                    DefaultBtn(onPressed: () =>goTo(context, HomeView()), text: "Login"),
                     DefaultText(text_2: "Register",text_1: "Don't",onTap: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterView()));
                     },),

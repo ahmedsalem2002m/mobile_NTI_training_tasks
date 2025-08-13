@@ -21,4 +21,8 @@ abstract class AppAssets
 
   static const String addIcon = '${_iconPath}Paper Plus - Iconly Pro.svg';
 
+  static const String setting = '${_iconPath}Setting.svg';
+  static const String arrow = '${_iconPath}Arrow - Up 2 - Iconly Pro.svg';
+  static const String arrowBack = '${_iconPath}arrow_back.svg';
+
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nti_todo_app/core/utils/app_colors.dart';
 import 'package:nti_todo_app/features/home/view/home_view.dart';
+import 'package:nti_todo_app/features/profile/view/profile_view.dart';
 import 'features/splash/view/view/splash_view.dart';
 
 void main(){
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.background
         ),
         debugShowCheckedModeBanner: false,
-        home: HomeView()
+        home: SplashView()
       ),
     );
   }
