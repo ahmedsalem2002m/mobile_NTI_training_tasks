@@ -64,9 +64,7 @@ class _LoginViewState extends State<LoginView> {
                     ),
                     SizedBox(height: 4),
                     DefaultBtn(onPressed: () =>goTo(context, HomeView()), text: "Login"),
-                    DefaultText(text_2: "Register",text_1: "Don't",onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterView()));
-                    },),
+                    DefaultText(text_2: "Register",text_1: "Don't",onTap: ()=>goTo(context, RegisterView()),),
                   ],
                 ),
               ),

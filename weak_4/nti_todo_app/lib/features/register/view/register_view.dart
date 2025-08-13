@@ -80,10 +80,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   SizedBox(height: 4),
                   DefaultBtn(onPressed: () =>goTo(context, HomeView()), text: "Register"),
-                  DefaultText(text_2: "Login", text_1: "Already", onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginView()));
-                  },),
+                  DefaultText(text_2: "Login", text_1: "Already", onTap: ()=>goTo(context, LoginView()),),
                   ],
                 ),
               ),
