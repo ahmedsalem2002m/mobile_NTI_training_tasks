@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nti_todo_app/core/utils/app_colors.dart';
-import 'package:nti_todo_app/features/home/view/home_view.dart';
-import 'package:nti_todo_app/features/profile/view/profile_view.dart';
 import 'features/splash/view/view/splash_view.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main(){
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {

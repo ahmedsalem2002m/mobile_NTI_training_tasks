@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:nti_todo_app/core/utils/app_colors.dart';
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_paddings.dart';
 import '../../../../core/widgets/default_app_bar.dart';
@@ -11,6 +12,28 @@ class EmptyHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // floatingActionButton: Container(
+      //   decoration: BoxDecoration(
+      //     shape: BoxShape.circle,
+      //     boxShadow: [
+      //       BoxShadow(
+      //         color: Colors.black.withOpacity(0.2),
+      //         blurRadius: 10,
+      //         spreadRadius: 2,
+      //         offset: Offset(0, 5),
+      //       ),
+      //     ],
+      //   ),
+      //   child: FloatingActionButton(
+      //     onPressed: () {},
+      //     backgroundColor: AppColors.primary,
+      //     child: SvgPicture.asset(
+      //       AppAssets.addTaskIcon,
+      //       width: 24,
+      //       height: 24,
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
