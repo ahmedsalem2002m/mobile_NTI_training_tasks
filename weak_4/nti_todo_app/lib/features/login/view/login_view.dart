@@ -40,11 +40,11 @@ class LoginView extends StatelessWidget {
                         spacing: 8,
                         children: [
                           DefaultFormField(
-                            controller: password,
-                            hintText: "Username",
+                            controller: LoginCubit.get(context).emailController,
+                            hintText: "Email",
                             prefixIcon: IconButton(
                               onPressed: null,
-                              icon: SvgPicture.asset(AppAssets.profileIcon),
+                              icon: Icon(Icons.email_outlined),
                             ),
                           ),
                           BlocBuilder<LoginCubit,LoginState>(
@@ -69,7 +69,7 @@ class LoginView extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                controller: userName,
+                                controller: LoginCubit.get(context).passwordController,
                                 hintText: "Password",
                                 prefixIcon: IconButton(
                                   onPressed: null,
