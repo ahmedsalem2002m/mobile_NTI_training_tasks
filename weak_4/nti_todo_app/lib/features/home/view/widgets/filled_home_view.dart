@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:nti_todo_app/core/helper/my_navigator.dart';
+import 'package:nti_todo_app/features/add_task/view/add_task_view.dart';
+import 'package:nti_todo_app/features/home/view/widgets/default_floating_action.dart';
+import '../../../../core/utils/app_assets.dart';
+import '../../../../core/utils/app_colors.dart';
 import '../../../../core/utils/app_paddings.dart';
 import '../../../../core/widgets/default_app_bar.dart';
 import 'custom_row.dart';
@@ -13,9 +19,10 @@ class FilledHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: DefaultFloatingAction(),
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

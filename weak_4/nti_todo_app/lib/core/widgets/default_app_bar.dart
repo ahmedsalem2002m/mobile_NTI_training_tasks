@@ -12,31 +12,36 @@ class DefaultAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap:() => goTo(context, ProfileView()),
-      child: Row(
-        children:
-        [
-          CircleAvatar(
-            backgroundImage: AssetImage(AppAssets.flag),
-            radius: 30.r,
-          ),
-          SizedBox(
-            width: 18.0.w,
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:
-              [
-                Text('Hello'),
-                Text('Ahmed Salem',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
+      child: Column(
+        children: [
+          SizedBox(height: 8.h,),
+          Row(
+            children:
+            [
+              CircleAvatar(
+                backgroundImage: AssetImage(AppAssets.flag),
+                radius: 30.r,
+              ),
+              SizedBox(
+                width: 18.0.w,
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children:
+                  [
+                    Text('Hello'),
+                    Text('Ahmed Salem',
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+
+                  ],
                 ),
+              )
 
-              ],
-            ),
-          )
-
+            ],
+          ),
         ],
       ),
     );

@@ -3,8 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DefaultAppBarTwo extends StatelessWidget {
-   DefaultAppBarTwo({required this.function,required this.leadingIconPath,required this.text});
-  Function function;
+   DefaultAppBarTwo({required this.leadingIconPath,required this.text});
   String leadingIconPath;
   String text;
 
@@ -12,7 +11,9 @@ class DefaultAppBarTwo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        IconButton(onPressed: function(), icon:SvgPicture.asset(leadingIconPath)),
+        IconButton(onPressed: (){
+          Navigator.pop(context);
+        }, icon:SvgPicture.asset(leadingIconPath)),
         SizedBox(width: 107.w,),
         Text(
           text,

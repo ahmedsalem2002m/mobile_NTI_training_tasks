@@ -30,7 +30,6 @@ class _AddTaskViewState extends State<AddTaskView> {
               DefaultAppBarTwo(
                 text: "Add Task",
                 leadingIconPath: AppAssets.arrowBack,
-                function: () {},
               ),
               Padding(
                 padding: EdgeInsets.only(
