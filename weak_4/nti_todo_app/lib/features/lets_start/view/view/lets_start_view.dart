@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:nti_todo_app/core/helper/my_navigator.dart';
 import 'package:nti_todo_app/core/utils/app_assets.dart';
+import 'package:nti_todo_app/features/login/view/login_view.dart';
 
 import '../../../register/view/register_view.dart';
 
@@ -50,7 +52,7 @@ class LetsStartView extends StatelessWidget {
                       ),
                       color: Color(0xff149954),
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterView()));
+                        goTo(context, LoginView());
                       },
                       child: Text(
                         textAlign: TextAlign.center,

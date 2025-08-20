@@ -25,5 +25,7 @@ abstract class AppAssets
   static const String setting = '${_iconPath}Setting.svg';
   static const String arrow = '${_iconPath}Arrow - Up 2 - Iconly Pro.svg';
   static const String arrowBack = '${_iconPath}arrow_back.svg';
+  static const String dropdownArrow = '${_iconPath}dropdown_arrow.svg';
+  static const String calenderIcon = '${_iconPath}calendar.svg';
 
 }

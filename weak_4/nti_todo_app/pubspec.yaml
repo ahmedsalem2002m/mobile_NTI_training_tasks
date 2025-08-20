@@ -36,8 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.2.0
   flutter_screenutil: ^5.9.3
+  intl: ^0.18.1
   flutter_bloc: ^9.1.1
   firebase_core: ^4.0.0
+  firebase_auth: ^6.0.1
 
 dev_dependencies:
   flutter_test:

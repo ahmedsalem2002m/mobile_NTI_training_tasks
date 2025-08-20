@@ -18,75 +18,118 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context)=>RegisterCubit(),
+      create: (context) => RegisterCubit(),
       child: Scaffold(
         body: SafeArea(
           child: SingleChildScrollView(
             child: Builder(
-              builder: (context){
-                return BlocBuilder<RegisterCubit,RegisterState>(
-                  builder: (context,state){
-                    return Column(
-                      children: [
-                        Image.asset("assets/images/flag.png"),
-                        Padding(
-                          padding: const EdgeInsets.all(24.0),
-                          child: Column(
-                            spacing: 8,
-                            children: [
-                              DefaultFormField(
-                                controller: RegisterCubit.get(context).usernameCotroller,
-                                hintText: "Username",
-                                prefixIcon: IconButton(onPressed: null,
-                                    icon: SvgPicture.asset(AppAssets.profileIcon)),
-                              ),
-                              DefaultFormField(
-                                controller: RegisterCubit.get(context).emailCotroller,
-                                hintText: "Email",
-                                prefixIcon: IconButton(onPressed: null,
-                                    icon: Icon(Icons.email_outlined)),
-                              ),
-                              DefaultFormField(
-                                obscureText: RegisterCubit.get(context).showPassword,
-                                suffixIcon: GestureDetector(
-                                    onTap: () {
-                                      RegisterCubit.get(context).changePasswordVisibility();
-                                    },
-                                    child: RegisterCubit.get(context).showPassword
-                                        ? IconButton(onPressed: null,
-                                        icon: SvgPicture.asset(AppAssets.lockIcon))
-                                        : IconButton(onPressed: null,
-                                        icon: SvgPicture.asset(AppAssets.unlockIcon))),
-                                controller: RegisterCubit.get(context).passwordCotroller,
-                                hintText: "Password",
-                                prefixIcon: IconButton(onPressed: null,
-                                    icon: SvgPicture.asset(AppAssets.keyIcon)),
-                              ),
-                              DefaultFormField(
-                                obscureText: RegisterCubit.get(context).showConfirmPassword,
-                                controller: RegisterCubit.get(context).confirmCotroller,
-                                suffixIcon: GestureDetector(
-                                    onTap: () {
-                                      RegisterCubit.get(context).changeConfirmPasswordVisibility();
-                                    },
-                                    child: RegisterCubit.get(context).showConfirmPassword
-                                        ? IconButton(onPressed: null,
-                                        icon: SvgPicture.asset(AppAssets.lockIcon))
-                                        : IconButton(onPressed: null,
-                                        icon: SvgPicture.asset(AppAssets.unlockIcon))),
-                                hintText: "Confirm Password",
-                                prefixIcon: IconButton(onPressed: null,
-                                    icon: SvgPicture.asset(AppAssets.keyIcon)),
-                              ),
-                              SizedBox(height: 4),
-                              DefaultBtn(onPressed: () =>goTo(context, HomeView()), text: "Register"),
-                              DefaultText(text_2: "Login", text_1: "Already", onTap: ()=>goTo(context, LoginView()),),
-                            ],
+              builder: (context) {
+                return BlocConsumer<RegisterCubit, RegisterState>(
+                    listener: (context, state) {
+                      if(state is SuccessRegister){
+                        goTo(context, HomeView());
+                      }else if (state is ErrorRegister){
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(state.error)),);
+                      }
+                    },
+                    builder: (context, state) {
+                      return Column(
+                        children: [
+                          Image.asset("assets/images/flag.png"),
+                          Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: Column(
+                              spacing: 8,
+                              children: [
+                                DefaultFormField(
+                                  controller: RegisterCubit
+                                      .get(context)
+                                      .usernameCotroller,
+                                  hintText: "Username",
+                                  prefixIcon: IconButton(onPressed: null,
+                                      icon: SvgPicture.asset(
+                                          AppAssets.profileIcon)),
+                                ),
+                                DefaultFormField(
+                                  controller: RegisterCubit
+                                      .get(context)
+                                      .emailCotroller,
+                                  hintText: "Email",
+                                  prefixIcon: IconButton(onPressed: null,
+                                      icon: Icon(Icons.email_outlined)),
+                                ),
+                                DefaultFormField(
+                                  obscureText: RegisterCubit
+                                      .get(context)
+                                      .showPassword,
+                                  suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        RegisterCubit
+                                            .get(context)
+                                            .changePasswordVisibility();
+                                      },
+                                      child: RegisterCubit
+                                          .get(context)
+                                          .showPassword
+                                          ? IconButton(onPressed: null,
+                                          icon: SvgPicture.asset(
+                                              AppAssets.lockIcon))
+                                          : IconButton(onPressed: null,
+                                          icon: SvgPicture.asset(
+                                              AppAssets.unlockIcon))),
+                                  controller: RegisterCubit
+                                      .get(context)
+                                      .passwordCotroller,
+                                  hintText: "Password",
+                                  prefixIcon: IconButton(onPressed: null,
+                                      icon: SvgPicture.asset(
+                                          AppAssets.keyIcon)),
+                                ),
+                                DefaultFormField(
+                                  obscureText: RegisterCubit
+                                      .get(context)
+                                      .showConfirmPassword,
+                                  controller: RegisterCubit
+                                      .get(context)
+                                      .confirmCotroller,
+                                  suffixIcon: GestureDetector(
+                                      onTap: () {
+                                        RegisterCubit
+                                            .get(context)
+                                            .changeConfirmPasswordVisibility();
+                                      },
+                                      child: RegisterCubit
+                                          .get(context)
+                                          .showConfirmPassword
+                                          ? IconButton(onPressed: null,
+                                          icon: SvgPicture.asset(
+                                              AppAssets.lockIcon))
+                                          : IconButton(onPressed: null,
+                                          icon: SvgPicture.asset(
+                                              AppAssets.unlockIcon))),
+                                  hintText: "Confirm Password",
+                                  prefixIcon: IconButton(onPressed: null,
+                                      icon: SvgPicture.asset(
+                                          AppAssets.keyIcon)),
+                                ),
+                                SizedBox(height: 4),
+                                state is LoadingRegister ?
+                                CircularProgressIndicator()
+                                    :
+                                DefaultBtn(onPressed: () {
+                                  if (RegisterCubit.get(context).validateForm()) {
+                                    RegisterCubit.get(context).onPressRegister();
+                                  }
+                                }, text: "Register"),
+                                DefaultText(text_2: "Login",
+                                  text_1: "Already",
+                                  onTap: () => goTo(context, LoginView()),),
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
-                    );
-                  }
+                        ],
+                      );
+                    }
                 );
               },
             ),
