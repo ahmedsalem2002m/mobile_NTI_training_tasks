@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-void goTo(context, Widget screen) =>
-    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
-
-
 
 
 Future<String?> pickDeadlineDateTime(BuildContext context) async {

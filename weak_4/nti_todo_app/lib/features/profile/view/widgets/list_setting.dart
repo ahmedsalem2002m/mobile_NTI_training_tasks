@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nti_todo_app/core/helper/my_navigator.dart';
+import 'package:nti_todo_app/core/helper/app_navigator.dart';
+import 'package:nti_todo_app/core/helper/app_pick-time.dart';
 import 'package:nti_todo_app/features/profile/view/widgets/setting_item.dart';
 
 import '../../../../core/utils/app_assets.dart';
@@ -15,9 +17,9 @@ class ListSetting extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<SettingModel> settingList = [
-      SettingModel(preIconPath: AppAssets.profileIcon, title: "Profile",onTap:()=>goTo(context, UpdateProfileView())),
-      SettingModel(preIconPath: AppAssets.keyIcon, title: "Change Password",onTap:()=>goTo(context, ChangePasswordView())),
-      SettingModel(preIconPath: AppAssets.setting, title: "Settings",onTap:()=>goTo(context, LanguageView())),
+      SettingModel(preIconPath: AppAssets.profileIcon, title: "Profile",onTap:()=>AppNavigator.goTo(context, UpdateProfileView())),
+      SettingModel(preIconPath: AppAssets.keyIcon, title: "Change Password",onTap:()=>AppNavigator.goTo(context, ChangePasswordView())),
+      SettingModel(preIconPath: AppAssets.setting, title: "Settings",onTap:()=>AppNavigator.goTo(context, LanguageView())),
 
     ];
     return Expanded(

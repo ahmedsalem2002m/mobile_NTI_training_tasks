@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:nti_todo_app/core/helper/app_navigator.dart';
 import 'package:nti_todo_app/core/helper/app_validator.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
 import 'package:nti_todo_app/features/login/cubit/login_cubit.dart';
@@ -9,7 +10,7 @@ import 'package:nti_todo_app/features/register/view/register_view.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 
 import '../../../../core/widgets/default_btn.dart';
-import '../../../core/helper/my_navigator.dart';
+import '../../../core/helper/app_pick-time.dart';
 import '../../../core/utils/app_assets.dart';
 import '../../home/view/home_view.dart';
 
@@ -55,7 +56,7 @@ class LoginView extends StatelessWidget {
                             BlocConsumer<LoginCubit, LoginState>(
                               listener:(context, state){
                                 if(state is LoginSuccess){
-                                  goTo(context, HomeView());
+                                  AppNavigator.goTo(context, HomeView());
                                 }
                               },
                               builder: (context, state) {
@@ -104,7 +105,7 @@ class LoginView extends StatelessWidget {
                             DefaultText(
                               text_2: "Register",
                               text_1: "Don't",
-                              onTap: () => goTo(context, RegisterView()),
+                              onTap: () => AppNavigator.goTo(context, RegisterView()),
                             ),
                           ],
                         ),
