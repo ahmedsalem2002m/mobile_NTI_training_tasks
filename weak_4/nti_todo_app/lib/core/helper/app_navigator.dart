@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 enum NavigatorType {push, pushReplacement, pushAndRemoveUntil}
 abstract class AppNavigator
 {
-  static gooTo(BuildContext context, Widget screen, {NavigatorType type = NavigatorType.push})
+  static goTo(BuildContext context, Widget screen, {NavigatorType type = NavigatorType.push})
   {
     var pageRoute = MaterialPageRoute(builder: (_) => screen);
     switch(type)
@@ -18,6 +18,6 @@ abstract class AppNavigator
 
   static goBack(context)=> Navigator.pop(context);
 
-   static void goTo(context, Widget screen) =>
-      Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
+   // static void goTo(context, Widget screen) =>
+   //    Navigator.push(context, MaterialPageRoute(builder: (context) => screen));
 }

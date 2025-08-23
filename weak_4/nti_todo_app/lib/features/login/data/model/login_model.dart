@@ -1,18 +1,25 @@
 import 'dart:io';
 
-class LoginModel{
+class UserModel{
   String? name;
-  String? password;
+  String? email;
+  String? id;
 
-  LoginModel({required this.name,required this.password});
-  LoginModel.fromJson(Map<String,dynamic> json){
+  UserModel({this.id, this.name, this.email});
+
+
+  UserModel.fromJson(Map<String,dynamic> json){
+    id =json["id"];
     name = json["name"];
-    password = json["password"];
+    email =json["email"];
   }
+
+
   Map<String,dynamic> toJson(){
     return{
+      "id":id,
       "name":name,
-      "password":password
+      "email":email,
     };
   }
 }

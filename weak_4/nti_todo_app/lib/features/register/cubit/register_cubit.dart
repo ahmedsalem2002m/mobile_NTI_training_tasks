@@ -25,52 +25,24 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(ChangeVisibility());
   }
 
-  void onPressRegister() async {
-    if(!formKey.currentState!.validate()){
+  onRegisterPressed()async
+  {
+    if(!formKey.currentState!.validate())
+    {
       return;
     }
     emit(LoadingRegister());
-    RegisterRepo registerRepo = RegisterRepo();
-    var result = await registerRepo.register(
-      name: usernameController.text,
-      email: emailController.text,
-      password: passwordController.text,
+    RegisterRepo repo = RegisterRepo();
+    var response = await repo.register(
+        name: usernameController.text,
+        email: emailController.text,
+        password: passwordController.text
     );
-    if (result) {
-      emit(SuccessRegister());
-    } else {
-      emit(ErrorRegister(error: "Error in registration"));
-    }
+    response.fold(
+            (String error)=> emit(ErrorRegister(error: error)),
+            (userModel)=> emit(SuccessRegister(userModel: userModel))
+    );
   }
 
-  // bool validateForm() {
-  //   if (usernameController.text.isEmpty) {
-  //     emit(ErrorRegister(error: "Username is required"));
-  //     return false;
-  //   }
-  //
-  //   if (emailController.text.isEmpty || !emailController.text.contains('@')) {
-  //     emit(ErrorRegister(error: "Valid email is required"));
-  //     return false;
-  //   }
-  //
-  //   if (passwordController.text.isEmpty || passwordController.text.length < 6) {
-  //     emit(ErrorRegister(error: "Password must be at least 6 characters"));
-  //     return false;
-  //   }
-  //
-  //   if (confirmController.text.isEmpty) {
-  //     emit(ErrorRegister(error: "Please confirm your password"));
-  //     return false;
-  //   }
-  //
-  //   if (confirmController.text != passwordController.text) {
-  //     emit(ErrorRegister(error: "Passwords do not match"));
-  //     return false;
-  //   }
-  //
-  //
-  //   return true;
-  // }
 
 }

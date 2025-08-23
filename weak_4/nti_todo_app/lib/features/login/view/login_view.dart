@@ -34,33 +34,37 @@ class LoginView extends StatelessWidget {
               return SingleChildScrollView(
                 child: Form(
                   key: LoginCubit.get(context).formKey,
-                  child: Column(
-                    children: [
-                      Image.asset("assets/images/flag.png"),
-                      Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: Column(
-                          spacing: 8,
-                          children: [
-                            DefaultFormField(
-                              validator: AppValidator.emailValidator,
-                              controller: LoginCubit.get(
-                                context,
-                              ).emailController,
-                              hintText: "Email",
-                              prefixIcon: IconButton(
-                                onPressed: null,
-                                icon: Icon(Icons.email_outlined),
-                              ),
-                            ),
-                            BlocConsumer<LoginCubit, LoginState>(
-                              listener:(context, state){
-                                if(state is LoginSuccess){
-                                  AppNavigator.goTo(context, HomeView());
-                                }
-                              },
-                              builder: (context, state) {
-                                return DefaultFormField(
+                  child: BlocConsumer<LoginCubit,LoginState>(
+                    listener: (context, state) {
+                      if (state is LoginSuccess) {
+                        AppNavigator.goTo(context, HomeView(),type: NavigatorType.pushAndRemoveUntil);
+                      }else if(state is LoginError) {
+                        ScaffoldMessenger.of(
+                          context,
+                        ).showSnackBar(SnackBar(content: Text(state.error)));
+                      }
+                    },
+                    builder: (context, state) {
+                      return Column(
+                        children: [
+                          Image.asset("assets/images/flag.png"),
+                          Padding(
+                            padding: const EdgeInsets.all(24.0),
+                            child: Column(
+                              spacing: 8,
+                              children: [
+                                DefaultFormField(
+                                  validator: AppValidator.emailValidator,
+                                  controller: LoginCubit.get(
+                                    context,
+                                  ).emailController,
+                                  hintText: "Email",
+                                  prefixIcon: IconButton(
+                                    onPressed: null,
+                                    icon: Icon(Icons.email_outlined),
+                                  ),
+                                ),
+                                DefaultFormField(
                                   validator: AppValidator.passwordValidator,
                                   obscureText: LoginCubit.get(
                                     context,
@@ -73,17 +77,17 @@ class LoginView extends StatelessWidget {
                                     },
                                     child: LoginCubit.get(context).showPassword
                                         ? IconButton(
-                                            onPressed: null,
-                                            icon: SvgPicture.asset(
-                                              AppAssets.lockIcon,
-                                            ),
-                                          )
+                                      onPressed: null,
+                                      icon: SvgPicture.asset(
+                                        AppAssets.lockIcon,
+                                      ),
+                                    )
                                         : IconButton(
-                                            onPressed: null,
-                                            icon: SvgPicture.asset(
-                                              AppAssets.unlockIcon,
-                                            ),
-                                          ),
+                                      onPressed: null,
+                                      icon: SvgPicture.asset(
+                                        AppAssets.unlockIcon,
+                                      ),
+                                    ),
                                   ),
                                   controller: LoginCubit.get(
                                     context,
@@ -93,24 +97,30 @@ class LoginView extends StatelessWidget {
                                     onPressed: null,
                                     icon: SvgPicture.asset(AppAssets.keyIcon),
                                   ),
-                                );
-                              },
+                                ),
+                                SizedBox(height: 4),
+                                state is LoginLoading
+                                    ? CircularProgressIndicator()
+                                    : DefaultBtn(
+                                  onPressed: () => LoginCubit.get(
+                                    context,
+                                  ).onPressLogin(),
+                                  text: "Login",
+                                ),
+                                DefaultText(
+                                  text_2: "Register",
+                                  text_1: "Don't",
+                                  onTap: () => AppNavigator.goTo(
+                                    context,
+                                    RegisterView(),
+                                  ),
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 4),
-                            DefaultBtn(
-                              onPressed: () =>
-                                  LoginCubit.get(context).onPress(),
-                              text: "Login",
-                            ),
-                            DefaultText(
-                              text_2: "Register",
-                              text_1: "Don't",
-                              onTap: () => AppNavigator.goTo(context, RegisterView()),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
+                          ),
+                        ],
+                      );
+                    },
                   ),
                 ),
               );

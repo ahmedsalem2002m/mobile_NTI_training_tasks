@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../data/category_model.dart';
+import '../../data/models/category_model.dart';
 import 'category_task_container.dart';
 
 class ListCategoryTask extends StatelessWidget {

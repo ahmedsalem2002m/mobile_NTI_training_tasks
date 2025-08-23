@@ -3,7 +3,7 @@ import 'package:nti_todo_app/features/home/view/widgets/task_group_container.dar
 
 import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_colors.dart';
-import '../../data/group_model.dart';
+import '../../data/models/group_model.dart';
 
 class ListTaskGroup extends StatelessWidget {
    ListTaskGroup({super.key});

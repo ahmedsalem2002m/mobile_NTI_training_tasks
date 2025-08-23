@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nti_todo_app/core/utils/app_colors.dart';
-import 'package:nti_todo_app/features/add_task/view/add_task_view.dart';
-import 'package:nti_todo_app/features/home/view/home_view.dart';
+import 'features/home/view/home_view.dart';
 import 'features/splash/view/view/splash_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +14,15 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(MyApp());
+  FirebaseAuth.instance
+      .authStateChanges()
+      .listen((User? user) {
+    if (user == null) {
+      print('User is currently signed out!');
+    } else {
+      print('User is signed in!');
+    }
+  });
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -27,7 +36,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.background
         ),
         debugShowCheckedModeBanner: false,
-        home: SplashView()
+        home: FirebaseAuth.instance.currentUser == null ? const SplashView() : const HomeView()
       ),
     );
   }

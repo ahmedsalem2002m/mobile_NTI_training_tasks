@@ -7,7 +7,9 @@ import '../../features/profile/view/profile_view.dart';
 import '../helper/app_pick-time.dart';
 
 class DefaultAppBar extends StatelessWidget {
-   DefaultAppBar();
+   DefaultAppBar({this.name});
+
+   String? name;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class DefaultAppBar extends StatelessWidget {
                   children:
                   [
                     Text('Hello'),
-                    Text('Ahmed Salem',
+                    Text(name!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),

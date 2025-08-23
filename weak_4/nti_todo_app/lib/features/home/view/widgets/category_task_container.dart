@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nti_todo_app/core/utils/app_paddings.dart';
-import 'package:nti_todo_app/features/home/data/category_model.dart';
+import 'package:nti_todo_app/features/home/data/models/category_model.dart';
 
 
 class CategoryTaskContainer extends StatelessWidget {

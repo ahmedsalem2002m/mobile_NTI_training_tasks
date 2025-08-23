@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:nti_todo_app/features/home/data/group_model.dart';
+import 'package:nti_todo_app/features/home/data/models/group_model.dart';
 
 import '../../../../core/utils/app_colors.dart';
 

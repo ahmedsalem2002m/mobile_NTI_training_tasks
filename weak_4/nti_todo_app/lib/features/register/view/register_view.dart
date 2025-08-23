@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nti_todo_app/core/helper/app_navigator.dart';
 import 'package:nti_todo_app/core/helper/app_validator.dart';
-import 'package:nti_todo_app/core/helper/app_pick-time.dart';
 import 'package:nti_todo_app/core/utils/app_assets.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
 import 'package:nti_todo_app/features/home/view/home_view.dart';
@@ -29,7 +28,7 @@ class RegisterView extends StatelessWidget {
                 return BlocConsumer<RegisterCubit, RegisterState>(
                   listener: (context, state) {
                     if (state is SuccessRegister) {
-                      AppNavigator.goTo(context, HomeView());
+                      AppNavigator.goTo(context, HomeView(),type: NavigatorType.pushAndRemoveUntil);
                     } else if (state is ErrorRegister) {
                       ScaffoldMessenger.of(
                         context,
@@ -149,7 +148,7 @@ class RegisterView extends StatelessWidget {
                                         onPressed: () {
                                           RegisterCubit.get(
                                             context,
-                                          ).onPressRegister();
+                                          ).onRegisterPressed();
                                         },
                                         text: "Register",
                                       ),
