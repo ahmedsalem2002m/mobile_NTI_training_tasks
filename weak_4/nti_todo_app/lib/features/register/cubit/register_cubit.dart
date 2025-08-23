@@ -7,10 +7,11 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(InitialState());
 
   static RegisterCubit get(context) => BlocProvider.of(context);
-  TextEditingController passwordCotroller = TextEditingController();
-  TextEditingController confirmCotroller = TextEditingController();
-  TextEditingController usernameCotroller = TextEditingController();
-  TextEditingController emailCotroller = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController confirmController = TextEditingController();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  var formKey = GlobalKey<FormState>();
   bool showPassword = true;
   bool showConfirmPassword = true;
 
@@ -25,12 +26,15 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   void onPressRegister() async {
+    if(!formKey.currentState!.validate()){
+      return;
+    }
     emit(LoadingRegister());
     RegisterRepo registerRepo = RegisterRepo();
     var result = await registerRepo.register(
-      name: usernameCotroller.text,
-      email: emailCotroller.text,
-      password: passwordCotroller.text,
+      name: usernameController.text,
+      email: emailController.text,
+      password: passwordController.text,
     );
     if (result) {
       emit(SuccessRegister());
@@ -39,34 +43,34 @@ class RegisterCubit extends Cubit<RegisterState> {
     }
   }
 
-  bool validateForm() {
-    if (usernameCotroller.text.isEmpty) {
-      emit(ErrorRegister(error: "Username is required"));
-      return false;
-    }
-
-    if (emailCotroller.text.isEmpty || !emailCotroller.text.contains('@')) {
-      emit(ErrorRegister(error: "Valid email is required"));
-      return false;
-    }
-
-    if (passwordCotroller.text.isEmpty || passwordCotroller.text.length < 6) {
-      emit(ErrorRegister(error: "Password must be at least 6 characters"));
-      return false;
-    }
-
-    if (confirmCotroller.text.isEmpty) {
-      emit(ErrorRegister(error: "Please confirm your password"));
-      return false;
-    }
-
-    if (confirmCotroller.text != passwordCotroller.text) {
-      emit(ErrorRegister(error: "Passwords do not match"));
-      return false;
-    }
-
-
-    return true;
-  }
+  // bool validateForm() {
+  //   if (usernameController.text.isEmpty) {
+  //     emit(ErrorRegister(error: "Username is required"));
+  //     return false;
+  //   }
+  //
+  //   if (emailController.text.isEmpty || !emailController.text.contains('@')) {
+  //     emit(ErrorRegister(error: "Valid email is required"));
+  //     return false;
+  //   }
+  //
+  //   if (passwordController.text.isEmpty || passwordController.text.length < 6) {
+  //     emit(ErrorRegister(error: "Password must be at least 6 characters"));
+  //     return false;
+  //   }
+  //
+  //   if (confirmController.text.isEmpty) {
+  //     emit(ErrorRegister(error: "Please confirm your password"));
+  //     return false;
+  //   }
+  //
+  //   if (confirmController.text != passwordController.text) {
+  //     emit(ErrorRegister(error: "Passwords do not match"));
+  //     return false;
+  //   }
+  //
+  //
+  //   return true;
+  // }
 
 }

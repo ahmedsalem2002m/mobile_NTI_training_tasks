@@ -7,11 +7,19 @@ class LoginCubit extends Cubit<LoginState>{
   static LoginCubit get(context)=>BlocProvider.of(context);
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  var formKey = GlobalKey<FormState>() ;
   bool showPassword = true;
 
   void changeVisibility(){
     showPassword = !showPassword;
     emit(ChangeVisibility());
+  }
+
+  void onPress(){
+    if(!formKey.currentState!.validate()){
+      return;
+    }
+    emit(LoginSuccess());
   }
 
 }
