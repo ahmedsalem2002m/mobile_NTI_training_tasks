@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:news_app/features/splash_view/views/splash_view.dart';
 
 void main(){
   runApp(MyApp());
@@ -10,8 +12,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-     // home: ,
+    return ScreenUtilInit(
+      designSize: const Size(430, 932),
+      builder: (context,widget)=>MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home:SplashView(),
+      ),
     );
   }
 }

@@ -5,7 +5,6 @@ import 'package:nti_todo_app/core/utils/app_assets.dart';
 
 import '../../../lets_start/view/view/lets_start_view.dart';
 
-
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -15,22 +14,23 @@ class SplashView extends StatefulWidget {
 
 class _SplashViewState extends State<SplashView> {
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(Duration(seconds: 1),(){
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>LetsStartView()));
+    Timer(Duration(seconds: 1), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LetsStartView()),
+      );
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(40.0),
-          child: Image.asset(
-            AppAssets.logo,
-            fit: BoxFit.cover,
-          ),
+          child: Image.asset(AppAssets.logo, fit: BoxFit.cover),
         ),
       ),
     );
