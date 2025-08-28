@@ -15,13 +15,13 @@ class DefaultAppBar extends StatelessWidget {
           color: AppColors.secondary
       ),
       width: double.infinity.w,
-      height: 142.h,
+      height: 130.h,
       child:
       Padding(
         padding: AppPaddings.defaultHomePadding,
         child: Column(
           children: [
-            SizedBox(height: 54.h,),
+            SizedBox(height: 40.h,),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

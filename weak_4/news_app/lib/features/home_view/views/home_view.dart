@@ -4,9 +4,11 @@ import 'package:news_app/core/utils/app_assets.dart';
 import 'package:news_app/core/utils/app_colors.dart';
 import 'package:news_app/core/utils/app_paddings.dart';
 import 'package:news_app/core/widgets/default_app_bar.dart';
+import 'package:news_app/features/home_view/views/widgets/news_card_list.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+   HomeView({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -17,8 +19,9 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: AppPaddings.defaultHomePadding,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                SizedBox(height: 20.h),
+                SizedBox(height: 12.h),
                 Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
@@ -51,7 +54,7 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 12.h),
+                SizedBox(height: 6.h),
                 Center(
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
@@ -66,7 +69,7 @@ class HomeView extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 12.h),
+                SizedBox(height: 6.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -87,6 +90,9 @@ class HomeView extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 3.h),
+                NewsCardList()
+
               ],
             ),
           ),
