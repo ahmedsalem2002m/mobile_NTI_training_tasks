@@ -8,6 +8,7 @@ import 'package:news_app/features/home_view/views/home_view.dart';
 import 'package:news_app/features/splash_view/views/widgets/default_form_field.dart';
 
 import '../../../core/helper/app_navigator.dart';
+import '../../../navigator_bar.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -44,7 +45,7 @@ class SearchView extends StatelessWidget {
                 children: [
                   ElevatedButton(
                     onPressed: (){
-                      AppNavigator.goTo(context, HomeView(),type: NavigatorType.pushReplacement);
+                      AppNavigator.goTo(context, NavigatorBar(),type: NavigatorType.pushReplacement);
                     },
                     style:ElevatedButton.styleFrom(
                         backgroundColor: AppColors.buttonPrimary

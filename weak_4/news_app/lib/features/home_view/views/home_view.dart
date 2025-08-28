@@ -13,90 +13,92 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          DefaultAppBar(),
-          Padding(
-            padding: AppPaddings.defaultHomePadding,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                SizedBox(height: 12.h),
-                Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: [
-                    Image.asset(AppAssets.image_1),
-                    Container(
-                      height: 66.h,
-                      width: 375.w,
-                      child: Padding(
-                        padding: AppPaddings.defaultSecondHomePadding,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Experience the Serenity of\nJapan's Traditional Countryside",
-                              style: TextStyle(
-                                fontSize: 16.sp,
-                                color: AppColors.primary,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            DefaultAppBar(),
+            Padding(
+              padding: AppPaddings.defaultHomePadding,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(height: 12.h),
+                  Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: [
+                      Image.asset(AppAssets.image_1),
+                      Container(
+                        height: 66.h,
+                        width: 375.w,
+                        child: Padding(
+                          padding: AppPaddings.defaultSecondHomePadding,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Experience the Serenity of\nJapan's Traditional Countryside",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: AppColors.primary,
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Luc Olinga",
-                              style: TextStyle(
-                                fontSize: 14.sp,
-                                color: AppColors.primary,
+                              Text(
+                                "Luc Olinga",
+                                style: TextStyle(
+                                  fontSize: 14.sp,
+                                  color: AppColors.primary,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 6.h),
-                Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    spacing: 3.w,
-                    children: [
-                      CircleAvatar(radius: 3),
-                      CircleAvatar(
-                        backgroundColor: AppColors.buttonPrimary,
-                        radius: 3,
-                      ),
-                      CircleAvatar(radius: 3),
                     ],
                   ),
-                ),
-                SizedBox(height: 6.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      "Most Popular",
-                      style: TextStyle(
-                        fontSize: 24.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  SizedBox(height: 6.h),
+                  Center(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      spacing: 3.w,
+                      children: [
+                        CircleAvatar(radius: 3),
+                        CircleAvatar(
+                          backgroundColor: AppColors.buttonPrimary,
+                          radius: 3,
+                        ),
+                        CircleAvatar(radius: 3),
+                      ],
                     ),
-                    Text(
-                      "See More",
-                      style: TextStyle(
-                        color: AppColors.buttonPrimary,
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w600,
+                  ),
+                  SizedBox(height: 6.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Most Popular",
+                        style: TextStyle(
+                          fontSize: 24.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 3.h),
-                NewsCardList()
+                      Text(
+                        "See More",
+                        style: TextStyle(
+                          color: AppColors.buttonPrimary,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 3.h),
+                  NewsCardList()
 
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

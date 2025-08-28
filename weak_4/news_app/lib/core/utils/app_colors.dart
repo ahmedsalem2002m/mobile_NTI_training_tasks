@@ -9,4 +9,5 @@ abstract class AppColors{
   static const Color textSecondary =Color(0xff6D6265);
   static const Color buttonPrimary =Color(0xff2D5BD0);
   static const Color lightGrey =Color(0xffF0EFF0);
+  static const Color navigationColor =Color(0xffFCE9EE);
 }
