@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news_app/core/utils/app_assets.dart';
 import 'package:news_app/core/utils/app_colors.dart';
 import 'package:news_app/features/home_view/views/home_view.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
