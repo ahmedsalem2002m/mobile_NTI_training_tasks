@@ -21,7 +21,7 @@ class _SplashViewState extends State<SplashView> {
   void initState(){
     super.initState();
     Timer(Duration(seconds: 2),(){
-      AppNavigator.goTo(context,GetStartView());
+      AppNavigator.goTo(context,OnboardingView(),type: NavigatorType.pushReplacement);
     });
 
   }

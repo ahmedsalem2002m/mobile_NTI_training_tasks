@@ -17,8 +17,8 @@ class DefaultBtn extends StatelessWidget {
         style: TextStyle(
           fontSize: 24.sp,
           color: textColor!
-              ? APPColors.textColorPrimary
-              : APPColors.colorButton,
+              ? AppColors.textColorPrimary
+              : AppColors.colorButton,
         ),
       ),
     );

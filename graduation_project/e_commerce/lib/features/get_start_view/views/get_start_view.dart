@@ -36,7 +36,7 @@ class GetStartView extends StatelessWidget {
                   textAlign: TextAlign.center,
                   "You want\nAuthentic, here\nYou go!",
                   style: TextStyle(
-                    color: APPColors.textColorPrimary,
+                    color: AppColors.textColorPrimary,
                     fontSize: 34.sp,
                     fontWeight: FontWeight.w500,
                   ),
@@ -45,7 +45,7 @@ class GetStartView extends StatelessWidget {
                 Text(
                   "find it here, but it now!",
                   style: TextStyle(
-                    color: APPColors.textColorSecondary,
+                    color: AppColors.textColorSecondary,
                     fontSize: 14.sp,
                     fontWeight: FontWeight.w400,
                   ),
@@ -54,14 +54,14 @@ class GetStartView extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: 55,
-                  color: APPColors.colorButton,
+                  color: AppColors.colorButton,
                   child: DefaultBtn(titleButton: "Login"),
                 ),
                 SizedBox(height: 15.h),
                 Container(
                   width: double.infinity,
                   height: 55,
-                  color: APPColors.textColorPrimary,
+                  color: AppColors.textColorPrimary,
                   child: DefaultBtn(titleButton: "Register", textColor: false),
                 ),
                 SizedBox(height: 15.h),
