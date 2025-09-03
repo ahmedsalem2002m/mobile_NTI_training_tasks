@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "978808974190",
+    "project_id": "nti-todo-e6eee",
+    "storage_bucket": "nti-todo-e6eee.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978808974190:android:cd60fba7947570aaa72f7f",
+        "android_client_info": {
+          "package_name": "com.example.nti_todo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYrvdj2BrDq5yqrfxN6wt-a3SwaYZGey4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
