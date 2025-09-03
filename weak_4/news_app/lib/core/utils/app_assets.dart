@@ -4,10 +4,14 @@
    static const String splashIcon= "${_iconPath}splash_icon.svg";
    static const String welcomeIcon= "${_iconPath}welcome_icon.svg";
    static const String profileIcon= "${_iconPath}profile_icon.svg";
-   // static const String homeIcon= "${_iconPath}home-alt.svg";
-   // static const String settingsIcon= "${_iconPath}settings.svg";
-   // static const String bookIcon= "${_iconPath}book-heart.svg";
-   // static const String globeIcon= "${_iconPath}globe-asia.svg";
+   static const String bookmarkIcon= "${_iconPath}Bookmark_icon.svg";
+   static const String bookmarkIconUnColor= "${_iconPath}Bookmark_icon_uncolor.svg";
+   static const String wrapperIcon= "${_iconPath}wrapper_icon.svg";
+   static const String wrapperIcon_2= "${_iconPath}wrapper_icon_2.svg";
+
+
+
+
    static const String welcomeImage= "${_imagePath}welcome_image.png";
    static const String searchImage= "${_imagePath}search_image.png";
    static const String search= "${_imagePath}search_image.png";
@@ -19,5 +23,7 @@
    static const String heartImage= "${_imagePath}heart_image.png";
    static const String globeImage= "${_imagePath}globe_image.png";
    static const String settingsImage= "${_imagePath}settings.png";
+   static const String articleImage= "${_imagePath}article_image.png";
+   static const String personalImage= "${_imagePath}personal_image.png";
 
  }

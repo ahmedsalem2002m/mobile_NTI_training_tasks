@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/app_assets.dart';
-import '../data/models/news_card_model.dart';
+import '../../data/models/news_card_model.dart';
 import 'news_card.dart';
 
 class NewsCardList extends StatelessWidget {

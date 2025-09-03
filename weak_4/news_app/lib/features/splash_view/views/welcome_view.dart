@@ -6,6 +6,8 @@ import 'package:news_app/core/utils/app_colors.dart';
 import 'package:news_app/core/utils/app_paddings.dart';
 import 'package:news_app/features/splash_view/views/search_view.dart';
 
+import 'location_view.dart';
+
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key});
 

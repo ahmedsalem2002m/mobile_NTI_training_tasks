@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:news_app/features/home_view/views/data/models/news_card_model.dart';
 import '../../../../core/utils/app_colors.dart';
+import '../../data/models/news_card_model.dart';
 
 class NewsCard extends StatelessWidget {
   NewsCard({super.key, required this.newsCardModel});
