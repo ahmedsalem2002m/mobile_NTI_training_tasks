@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:nti_todo_app/core/helper/app_navigator.dart';
 import 'package:nti_todo_app/core/helper/app_validator.dart';
 import 'package:nti_todo_app/core/utils/app_assets.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
-import 'package:nti_todo_app/features/home/view/home_view.dart';
 import 'package:nti_todo_app/features/register/cubit/register_cubit.dart';
 import 'package:nti_todo_app/features/register/cubit/register_state.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
-
 import '../../../../core/widgets/default_btn.dart';
+import '../../../core/helper/app_pop_up.dart';
 import '../../login/view/login_view.dart';
 
 class RegisterView extends StatelessWidget {
@@ -28,7 +28,8 @@ class RegisterView extends StatelessWidget {
                 return BlocConsumer<RegisterCubit, RegisterState>(
                   listener: (context, state) {
                     if (state is SuccessRegister) {
-                      AppNavigator.goTo(context, HomeView(),type: NavigatorType.pushAndRemoveUntil);
+                      AppPopUp.showSnackBar('Register Success', context);
+                      AppNavigator.goTo(context, LoginView(),type: NavigatorType.pushAndRemoveUntil);
                     } else if (state is ErrorRegister) {
                       ScaffoldMessenger.of(
                         context,
@@ -46,6 +47,26 @@ class RegisterView extends StatelessWidget {
                             child: Column(
                               spacing: 8,
                               children: [
+                                DefaultFormField(
+                                  validator: AppValidator.phoneValidator,
+                                  controller: RegisterCubit.get(context).phoneController,
+                                  prefixIcon: IconButton(
+                                      onPressed: null,
+                                      icon: Icon(Icons.call)
+                                  ),
+                                  hintText: 'Phone Number',
+                                ),
+                                // SizedBox(height: 10.h,),
+                                // DefaultFormField(
+                                //   validator: AppValidator.requiredValidator,
+                                //   controller: RegisterCubit.get(context).nameController,
+                                //   prefixIcon: IconButton(
+                                //       onPressed: null,
+                                //       icon: Icon(Icons.title)
+                                //   ),
+                                //   hintText: 'Name',
+                                // ),
+                                //SizedBox(height: 10.h,),
                                 DefaultFormField(
                                   controller: RegisterCubit.get(
                                     context,

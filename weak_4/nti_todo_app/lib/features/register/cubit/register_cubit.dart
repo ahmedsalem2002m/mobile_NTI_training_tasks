@@ -7,6 +7,9 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(InitialState());
 
   static RegisterCubit get(context) => BlocProvider.of(context);
+
+ // XFile? image;
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
@@ -25,6 +28,25 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(ChangeVisibility());
   }
 
+  // onRegisterPressed()async
+  // {
+  //   if(!formKey.currentState!.validate())
+  //   {
+  //     return;
+  //   }
+  //   emit(LoadingRegister());
+  //   RegisterRepo repo = RegisterRepo();
+  //   var response = await repo.register(
+  //       name: usernameController.text,
+  //       email: emailController.text,
+  //       password: passwordController.text
+  //   );
+  //   response.fold(
+  //           (String error)=> emit(ErrorRegister(error: error)),
+  //           (userModel)=> emit(SuccessRegister(userModel: userModel))
+  //   );
+  // }
+
   onRegisterPressed()async
   {
     if(!formKey.currentState!.validate())
@@ -34,13 +56,15 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(LoadingRegister());
     RegisterRepo repo = RegisterRepo();
     var response = await repo.register(
+        phone: phoneController.text,
         name: usernameController.text,
         email: emailController.text,
-        password: passwordController.text
+        password: passwordController.text,
+        //image: image
     );
     response.fold(
             (String error)=> emit(ErrorRegister(error: error)),
-            (userModel)=> emit(SuccessRegister(userModel: userModel))
+            (userModel)=> emit(SuccessRegister())
     );
   }
 
