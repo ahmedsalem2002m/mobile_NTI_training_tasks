@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nti_todo_app/features/register/data/model/register_model.dart';
 
 import '../../../../core/network/api_helper.dart';
@@ -47,7 +48,7 @@ class RegisterRepo{
     required String name,
     required String email,
     required String password,
-    //XFile? image
+    XFile? image
   })async
   {
     try {
@@ -58,13 +59,13 @@ class RegisterRepo{
         'phone': phone,
       };
 
-      // If image exists, attach as file
-      // if (image != null) {
-      //   data['image'] = await MultipartFile.fromFile(
-      //     image.path,
-      //     filename: image.name,
-      //   );
-      // }
+      //If image exists, attach as file
+      if (image != null) {
+        data['image'] = await MultipartFile.fromFile(
+          image.path,
+          filename: image.name,
+        );
+      }
       var response = await apiHelper.postRequest(
           endPoint: EndPoints.register,
           data: data

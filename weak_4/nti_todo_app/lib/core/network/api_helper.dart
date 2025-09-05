@@ -18,6 +18,7 @@ class ApiHelper
         receiveTimeout: Duration(seconds: 10),
       )
   );
+
   Future<ApiResponse> postRequest({
     required String endPoint,
     Map<String, dynamic>? data,
@@ -31,6 +32,8 @@ class ApiHelper
       data: isFormData? FormData.fromMap(data??{}): data,
     ));
   }
+
+
   Future<ApiResponse> getRequest({
     required String endPoint,
     Map<String, dynamic>? data,

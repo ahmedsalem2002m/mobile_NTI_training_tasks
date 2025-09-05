@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,9 +10,11 @@ import 'package:nti_todo_app/core/utils/app_assets.dart';
 import 'package:nti_todo_app/core/widgets/default_form_field.dart';
 import 'package:nti_todo_app/features/register/cubit/register_cubit.dart';
 import 'package:nti_todo_app/features/register/cubit/register_state.dart';
+import 'package:nti_todo_app/features/register/view/widgets/custom_image_auth.dart';
 import 'package:nti_todo_app/features/register/view/widgets/defualt_text.dart';
 import '../../../../core/widgets/default_btn.dart';
 import '../../../core/helper/app_pop_up.dart';
+import '../../../core/widgets/image_manager/image_manager_view.dart';
 import '../../login/view/login_view.dart';
 
 class RegisterView extends StatelessWidget {
@@ -41,7 +45,15 @@ class RegisterView extends StatelessWidget {
                       key: RegisterCubit.get(context).formKey,
                       child: Column(
                         children: [
-                          Image.asset("assets/images/flag.png"),
+                          ImageManagerView(
+                            onImagePicked: (image)=> RegisterCubit.get(context).image = image,
+                            imageBuilder:(image){
+                              return CustomAuthImage(image: FileImage(File(image.path)),);
+                            },
+                            defaultBuilder: CustomAuthImage(),
+                          ),
+                          SizedBox(height: 23.h,),
+                          // Image.asset("assets/images/flag.png"),
                           Padding(
                             padding: const EdgeInsets.all(24.0),
                             child: Column(

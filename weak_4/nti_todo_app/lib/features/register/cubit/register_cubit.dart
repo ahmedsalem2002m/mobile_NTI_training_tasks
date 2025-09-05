@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:nti_todo_app/features/register/cubit/register_state.dart';
 import 'package:nti_todo_app/features/register/data/repo/register_repo.dart';
 
@@ -8,7 +9,7 @@ class RegisterCubit extends Cubit<RegisterState> {
 
   static RegisterCubit get(context) => BlocProvider.of(context);
 
- // XFile? image;
+  XFile? image;
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController confirmController = TextEditingController();
@@ -60,7 +61,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         name: usernameController.text,
         email: emailController.text,
         password: passwordController.text,
-        //image: image
+        image: image
     );
     response.fold(
             (String error)=> emit(ErrorRegister(error: error)),

@@ -10,7 +10,7 @@ plugins {
 
 android {
     namespace = "com.example.nti_todo_app"
-    compileSdk = 34
+    compileSdk = 35
     ndkVersion = "29.0.13113456"
 
     compileOptions {
