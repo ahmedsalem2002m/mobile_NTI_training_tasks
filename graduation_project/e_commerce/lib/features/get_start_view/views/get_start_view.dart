@@ -1,6 +1,9 @@
+import 'package:e_commerce/core/helper/app_navigator.dart';
 import 'package:e_commerce/core/utils/app_assets.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/widgets/default_btn.dart';
+import 'package:e_commerce/features/login_view/views/ligin_view.dart';
+import 'package:e_commerce/features/register_view/views/register_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -55,14 +58,18 @@ class GetStartView extends StatelessWidget {
                   width: double.infinity,
                   height: 55,
                   color: AppColors.colorButton,
-                  child: DefaultBtn(titleButton: "Login"),
+                  child: DefaultBtn(titleButton: "Login",onPressed:(){
+                    AppNavigator.goTo(context, LoginView());
+                  }),
                 ),
                 SizedBox(height: 15.h),
                 Container(
                   width: double.infinity,
                   height: 55,
                   color: AppColors.textColorPrimary,
-                  child: DefaultBtn(titleButton: "Register", textColor: false),
+                  child: DefaultBtn(titleButton: "Register", textColor: false,onPressed: (){
+                    AppNavigator.goTo(context, RegisterView());
+                  },),
                 ),
                 SizedBox(height: 15.h),
               ],

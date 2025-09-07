@@ -1,9 +1,7 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
-import 'package:e_commerce/features/onboarding_view/views/onboarding_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'features/onboarding_view/views/widgets/custom_onboarding_view.dart';
 import 'features/splash_view/views/splash_view.dart';
 
 void main() {

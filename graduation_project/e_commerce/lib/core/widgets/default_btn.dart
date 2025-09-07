@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class DefaultBtn extends StatelessWidget {
-  DefaultBtn({super.key, required this.titleButton, this.textColor = true});
+  DefaultBtn({super.key, required this.titleButton, this.textColor = true,this.onPressed});
 
   String titleButton;
   bool? textColor;
+  void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         titleButton,
         style: TextStyle(

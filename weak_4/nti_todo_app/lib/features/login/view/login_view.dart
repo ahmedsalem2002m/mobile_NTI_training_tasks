@@ -17,11 +17,11 @@ import '../../home/view/home_view.dart';
 class LoginView extends StatelessWidget {
   LoginView({super.key});
 
-  TextEditingController userName = TextEditingController();
-
-  TextEditingController password = TextEditingController();
-
-  TextEditingController confirmPassword = TextEditingController();
+  // TextEditingController userName = TextEditingController();
+  //
+  // TextEditingController password = TextEditingController();
+  //
+  // TextEditingController confirmPassword = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
