@@ -1,48 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:nti_todo_app/core/helper/app_navigator.dart';
 
-import '../../../../core/utils/app_assets.dart';
+import '../../features/login/data/model/login_response_model.dart';
 import '../../features/profile/view/profile_view.dart';
-import '../helper/app_pick-time.dart';
+import '../helper/app_navigator.dart';
+import '../utils/app_assets.dart';
 
 class DefaultAppBar extends StatelessWidget {
-   DefaultAppBar({this.name});
+  final UserModel userModel;
 
-   String? name;
+  const DefaultAppBar({Key? key, required this.userModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap:() => AppNavigator.goTo(context, ProfileView()),
+      onTap: () => AppNavigator.goTo(
+        context,
+        ProfileView(userModel: userModel),
+      ),
       child: Column(
         children: [
-          SizedBox(height: 8.h,),
+          SizedBox(height: 8.h),
           Row(
-            children:
-            [
+            children: [
               CircleAvatar(
-                backgroundImage: AssetImage(AppAssets.flag),
+                backgroundImage: userModel.imagePath != null && userModel.imagePath!.isNotEmpty
+                    ? NetworkImage(userModel.imagePath!)
+                    : AssetImage(AppAssets.flag) as ImageProvider,
                 radius: 30.r,
               ),
-              SizedBox(
-                width: 18.0.w,
-              ),
+              SizedBox(width: 18.0.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:
-                  [
+                  children: [
                     Text('Hello'),
-                    Text(name!,
+                    Text(
+                      userModel.name!,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
-
                   ],
                 ),
               )
-
             ],
           ),
         ],

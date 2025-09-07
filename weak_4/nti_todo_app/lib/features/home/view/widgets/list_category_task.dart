@@ -8,8 +8,8 @@ import 'category_task_container.dart';
 
 class ListCategoryTask extends StatelessWidget {
    ListCategoryTask({super.key});
-  List<CategoryModel> category = [
-    CategoryModel(
+  List<CategoryModel_todo> category = [
+    CategoryModel_todo(
       categoryIconPath: AppAssets.work,
       colorCategory: AppColors.black,
       title: "Work Task",
@@ -17,7 +17,7 @@ class ListCategoryTask extends StatelessWidget {
       iconColor: AppColors.primary,
       textColor: AppColors.white,
     ),
-    CategoryModel(
+    CategoryModel_todo(
       categoryIconPath: AppAssets.personal,
       colorCategory: AppColors.categoryColor_1,
       title: "Personal Task",
@@ -26,7 +26,7 @@ class ListCategoryTask extends StatelessWidget {
       textColor: AppColors.grey,
     ),
 
-    CategoryModel(
+    CategoryModel_todo(
       categoryIconPath: AppAssets.home,
       colorCategory: AppColors.categoryColor_2,
       title: "Home Task",

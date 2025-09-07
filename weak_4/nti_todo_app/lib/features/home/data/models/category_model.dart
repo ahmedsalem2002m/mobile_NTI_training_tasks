@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-class CategoryModel {
+class CategoryModel_todo {
   String categoryIconPath;
   Color colorCategory;
   String title;
@@ -8,7 +8,7 @@ class CategoryModel {
   Color iconColor;
   Color textColor;
 
-  CategoryModel({
+  CategoryModel_todo({
     required this.categoryIconPath,
     required this.colorCategory,
     required this.title,

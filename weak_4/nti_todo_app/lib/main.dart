@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:nti_todo_app/core/utils/app_colors.dart';
 import 'package:nti_todo_app/features/login/view/login_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'features/home/view/home_view.dart';
-import 'features/splash/view/view/splash_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -14,7 +14,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  var sharedPref = await SharedPreferences.getInstance();
+  var accessToken = sharedPref.getString('access_token');
+  runApp(MyApp(screen: accessToken != null ? HomeView(): LoginView(),));
+
   FirebaseAuth.instance
       .authStateChanges()
       .listen((User? user) {
@@ -26,7 +29,8 @@ void main() async {
   });
 }
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final Widget screen;
+  const MyApp({super.key, required this.screen});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +41,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: AppColors.background
         ),
         debugShowCheckedModeBanner: false,
-        home:LoginView() //FirebaseAuth.instance.currentUser == null ? const SplashView() : const HomeView()
+        home:screen //FirebaseAuth.instance.currentUser == null ? const SplashView() : const HomeView()
       ),
     );
   }

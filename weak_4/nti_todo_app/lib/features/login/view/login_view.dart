@@ -37,7 +37,7 @@ class LoginView extends StatelessWidget {
                   child: BlocConsumer<LoginCubit,LoginState>(
                     listener: (context, state) {
                       if (state is LoginSuccess) {
-                        AppNavigator.goTo(context, HomeView(),type: NavigatorType.pushAndRemoveUntil);
+                        AppNavigator.goTo(context, HomeView(userModel: state.userModel,),type: NavigatorType.pushAndRemoveUntil);
                       }else if(state is LoginError) {
                         ScaffoldMessenger.of(
                           context,

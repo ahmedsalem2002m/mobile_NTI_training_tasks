@@ -8,7 +8,7 @@ import 'package:nti_todo_app/features/home/data/models/category_model.dart';
 class CategoryTaskContainer extends StatelessWidget {
   CategoryTaskContainer({required this.categoryModel});
 
-  CategoryModel categoryModel;
+  CategoryModel_todo categoryModel;
 
   @override
   Widget build(BuildContext context) {

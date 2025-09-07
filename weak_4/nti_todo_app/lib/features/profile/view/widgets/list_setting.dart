@@ -1,7 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:nti_todo_app/core/helper/app_navigator.dart';
-import 'package:nti_todo_app/core/helper/app_pick-time.dart';
 import 'package:nti_todo_app/features/profile/view/widgets/setting_item.dart';
 
 import '../../../../core/utils/app_assets.dart';
@@ -22,11 +20,11 @@ class ListSetting extends StatelessWidget {
       SettingModel(preIconPath: AppAssets.setting, title: "Settings",onTap:()=>AppNavigator.goTo(context, LanguageView())),
 
     ];
-    return Expanded(
-      child: ListView.builder(
-          itemCount: settingList.length,
-          itemBuilder: (context,index)=>SettingItem(settingModel: settingList[index],)),
-    );
+    return ListView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: settingList.length,
+        itemBuilder: (context,index)=>SettingItem(settingModel: settingList[index],));
   }
 }
 

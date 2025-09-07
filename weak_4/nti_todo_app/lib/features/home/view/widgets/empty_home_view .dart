@@ -23,7 +23,7 @@ class EmptyHomeView extends StatelessWidget {
                 padding: AppPaddings.defaultHomePadding,
                 child: Column(
                   children: [
-                    DefaultAppBar(),
+                    //DefaultAppBar(),
                     SizedBox(height: 79.h),
                     Center(
                       child: Text(
