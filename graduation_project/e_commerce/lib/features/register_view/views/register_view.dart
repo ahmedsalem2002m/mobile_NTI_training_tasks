@@ -57,7 +57,7 @@ class RegisterView extends StatelessWidget {
                         style: TextStyle(fontSize: 36.sp),
                       ),
                       SizedBox(height: 33.h),
-                      DefaultTexFormField(
+                      DefaultTextFormField(
                         validator: AppValidator.requiredValidator,
                         controller: RegisterCubit.get(
                           context,
@@ -66,21 +66,21 @@ class RegisterView extends StatelessWidget {
                         prefixIcon: Icon(Icons.person),
                       ),
                       SizedBox(height: 10.h),
-                      DefaultTexFormField(
+                      DefaultTextFormField(
                         validator: AppValidator.requiredValidator,
                         controller: RegisterCubit.get(context).phoneController,
                         hintText: "Phone",
                         prefixIcon: Icon(Icons.phone_sharp),
                       ),
                       SizedBox(height: 10.h),
-                      DefaultTexFormField(
+                      DefaultTextFormField(
                         validator: AppValidator.emailValidator,
                         controller: RegisterCubit.get(context).emailController,
                         hintText: "Email",
                         prefixIcon: Icon(Icons.email),
                       ),
                       SizedBox(height: 10.h),
-                      DefaultTexFormField(
+                      DefaultTextFormField(
                         validator: AppValidator.passwordValidator,
                         obscureText: RegisterCubit.get(context).showPassword,
                         suffixIcon: GestureDetector(
@@ -106,7 +106,7 @@ class RegisterView extends StatelessWidget {
                         prefixIcon: Icon(Icons.lock),
                       ),
                       SizedBox(height: 10.h),
-                      DefaultTexFormField(
+                      DefaultTextFormField(
                         validator: (value) =>
                             AppValidator.confirmPasswordValidator(
                               value,

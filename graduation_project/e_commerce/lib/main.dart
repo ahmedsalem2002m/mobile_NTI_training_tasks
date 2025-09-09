@@ -1,5 +1,6 @@
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/features/splash_view/views/splash_view.dart';
+import 'package:e_commerce/navigation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       builder: (context,widget){
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: SplashView(),
+          home: NavigationView(),
           theme: ThemeData(
             scaffoldBackgroundColor: AppColors.textColorPrimary
           ),

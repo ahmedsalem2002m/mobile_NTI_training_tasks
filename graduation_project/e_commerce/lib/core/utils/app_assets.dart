@@ -10,4 +10,6 @@ static const onboard_3Icon = "${_iconPath}onboard_3.svg";
 
 
 static const getStartImage = "${_imagePath}get_start_image.png";
+static const categoryImage = "${_imagePath}category_image.jpg";
+static const recoImage = "${_imagePath}reco_image.png";
 }

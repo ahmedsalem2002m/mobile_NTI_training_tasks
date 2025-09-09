@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../utils/app_colors.dart';
 
-class DefaultTexFormField extends StatefulWidget {
-  const DefaultTexFormField({
+class DefaultTextFormField extends StatefulWidget {
+  const DefaultTextFormField({
     super.key,
     this.validator,
     required this.controller,
@@ -25,10 +25,10 @@ class DefaultTexFormField extends StatefulWidget {
   final bool readOnly;
 
   @override
-  State<DefaultTexFormField> createState() => _DefaultFormFieldState();
+  State<DefaultTextFormField> createState() => _DefaultFormFieldState();
 }
 
-class _DefaultFormFieldState extends State<DefaultTexFormField> {
+class _DefaultFormFieldState extends State<DefaultTextFormField> {
   InputBorder borderBuilder() => OutlineInputBorder(
     borderRadius: BorderRadius.circular(15),
     borderSide: BorderSide(color: AppColors.textColorThird),

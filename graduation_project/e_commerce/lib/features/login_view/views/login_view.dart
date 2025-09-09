@@ -53,14 +53,14 @@ class LoginView extends StatelessWidget {
                     SizedBox(height: 42.h),
                     Text("Welcome\n Back!", style: TextStyle(fontSize: 36.sp)),
                     SizedBox(height: 45.h),
-                    DefaultTexFormField(
+                    DefaultTextFormField(
                       validator: AppValidator.emailValidator,
                       controller: LoginCubit.get(context).emailController,
                       hintText: "Email",
                       prefixIcon: Icon(Icons.email),
                     ),
                     SizedBox(height: 22.h),
-                    DefaultTexFormField(
+                    DefaultTextFormField(
                       validator: AppValidator.passwordValidator,
                       obscureText: LoginCubit.get(context).showPassword,
                       suffixIcon: GestureDetector(
