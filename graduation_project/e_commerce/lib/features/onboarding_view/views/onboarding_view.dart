@@ -5,7 +5,7 @@ import 'package:e_commerce/features/onboarding_view/views/widgets/custom_onboard
 import 'package:e_commerce/features/onboarding_view/views/widgets/custom_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/utils/app_colors.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -19,36 +19,39 @@ class _OnboardingViewState extends State<OnboardingView> {
   PageController pageController = PageController();
   int index = 0;
 
+  Future<void> finishOnboarding() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('is_onboarding_done', true);
+    AppNavigator.goTo(
+      context,
+      const GetStartView(),
+      type: NavigatorType.pushReplacement,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.textColorPrimary,
         actions: [
-          index == 2
-              ? SizedBox()
-              : GestureDetector(
-            onTap: () {
-              AppNavigator.goTo(
-                context,
-                GetStartView(),
-                type: NavigatorType.pushReplacement,
-              );
-            },
-            child: Padding(
-              padding: EdgeInsets.only(right: 16.w),
-              child: Center(
-                child: Text(
-                  "Skip",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 18.sp,
-                    color: AppColors.black,
+          if (index != 2)
+            GestureDetector(
+              onTap: finishOnboarding,
+              child: Padding(
+                padding: EdgeInsets.only(right: 16.w),
+                child: Center(
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18.sp,
+                      color: AppColors.black,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
         ],
       ),
       body: Column(
@@ -77,10 +80,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               ],
             ),
           ),
-          CustomRow(
-            index: index,
-            controller: pageController,
-          ),
+          CustomRow(index: index, controller: pageController),
           SizedBox(height: 24.h),
         ],
       ),

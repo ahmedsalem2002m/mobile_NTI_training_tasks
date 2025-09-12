@@ -1,12 +1,11 @@
 import 'dart:async';
-
-import 'package:e_commerce/core/utils/app_assets.dart';
-import 'package:e_commerce/features/get_start_view/views/get_start_view.dart';
+import 'package:e_commerce/features/login_view/views/login_view.dart';
 import 'package:e_commerce/features/onboarding_view/views/onboarding_view.dart';
+import 'package:e_commerce/navigation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../../core/helper/app_navigator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:e_commerce/core/utils/app_assets.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -16,15 +15,35 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
-
   @override
-  void initState(){
+  void initState() {
     super.initState();
-    Timer(Duration(seconds: 2),(){
-      AppNavigator.goTo(context,OnboardingView(),type: NavigatorType.pushReplacement);
-    });
-
+    Timer(const Duration(seconds: 2), checkNavigation);
   }
+
+  Future<void> checkNavigation() async {
+    final prefs = await SharedPreferences.getInstance();
+    final isOnboardingDone = prefs.getBool('is_onboarding_done') ?? false;
+    final token = prefs.getString('access_token');
+
+    if (!isOnboardingDone) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const OnboardingView()),
+      );
+    } else if (token == null) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const LoginView()),
+      );
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => const NavigationView()),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

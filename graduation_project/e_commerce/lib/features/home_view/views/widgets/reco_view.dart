@@ -2,26 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../product_details_view/views/product_details_view.dart';
+import '../../data/models/category.dart'; //
+class ProductGridView extends StatefulWidget {
+  final List<ProductModel> products;
 
+  const ProductGridView({super.key, required this.products});
 
-class ProductGridView extends StatelessWidget {
-  final List<Map<String, String>> products = List.generate(
-    10,
-        (index) => {
-      'title': 'Mens Starry',
-      'description': 'Mens Starry Sky Printed Shirt\n100% Cotton Fabric',
-      'price': '100',
-      'image': 'assets/images/reco_image.png',
-      'reviews': '1,52,344',
-    },
-  );
+  @override
+  State<ProductGridView> createState() => _ProductGridViewState();
+}
 
+class _ProductGridViewState extends State<ProductGridView> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
-      itemCount: products.length,
+      itemCount: widget.products.length,
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         mainAxisSpacing: 16.h,
@@ -29,18 +26,14 @@ class ProductGridView extends StatelessWidget {
         childAspectRatio: 0.48,
       ),
       itemBuilder: (context, index) {
-        final product = products[index];
+        final product = widget.products[index];
+
         return GestureDetector(
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => ProductDetailsScreen(
-                  title: product['title']!,
-                  description: product['description']!,
-                  price: product['price']!,
-                  image: product['image']!,
-                ),
+                builder: (_) => ProductDetailsView(product: product),
               ),
             );
           },
@@ -61,11 +54,12 @@ class ProductGridView extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
-                  child: Image.asset(
-                    product['image']!,
+                  child: Image.network(
+                    product.imagePath ?? '',
                     height: 230.h,
                     width: double.infinity,
                     fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) => Icon(Icons.broken_image, size: 100),
                   ),
                 ),
                 Padding(
@@ -74,33 +68,36 @@ class ProductGridView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product['title']!,
+                        product.name ?? '',
                         style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 4.h),
                       Text(
-                        product['description']!,
+                        product.description ?? '',
                         style: TextStyle(fontSize: 12.sp, color: Colors.grey[700]),
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       SizedBox(height: 8.h),
                       Text(
-                        '${product['price']} \$',
+                        '${product.price?.toStringAsFixed(2) ?? '0.00'} \$',
                         style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold),
                       ),
                       SizedBox(height: 8.h),
                       Row(
-                        children: [
-                          Row(
-                            children: List.generate(5, (i) {
-                              return Icon(Icons.star, color: Colors.amber, size: 14.sp);
-                            }),
-                          ),
-                          SizedBox(width: 4.w),
-                          Text(
-                            product['reviews']!,
-                            style: TextStyle(fontSize: 12.sp, color: Colors.grey),
-                          ),
-                        ],
+                        children: List.generate(5, (index) {
+                          double rating = product.rating ?? 0;
+
+                          if (index < rating.floor()) {
+                            return Icon(Icons.star, color: Colors.amber, size: 14.sp);
+                          } else if (index < rating && rating - index >= 0.5) {
+                            return Icon(Icons.star_half, color: Colors.amber, size: 14.sp);
+                          } else {
+                            return Icon(Icons.star_border, color: Colors.grey[300], size: 14.sp);
+                          }
+                        }),
                       ),
                     ],
                   ),

@@ -17,6 +17,12 @@ class CategorySuccess extends CategoryState {
 
   CategorySuccess({required this.categories});
 }
+
+class CategoryProductsSuccess extends CategoryState {
+  final List<ProductModel> products;
+  CategoryProductsSuccess({required this.products});
+}
+
 // class ProductsSuccess extends CategoryState {
 //   final ProductModel products;
 //

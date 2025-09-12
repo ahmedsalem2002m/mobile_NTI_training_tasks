@@ -1,3 +1,5 @@
+import 'package:e_commerce/core/helper/app_navigator.dart';
+import 'package:e_commerce/features/cart/views/cart_view.dart';
 import 'package:e_commerce/features/item_view/views/item_view.dart';
 import 'package:e_commerce/features/profile_view/views/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +20,11 @@ class _NavigationViewState extends State<NavigationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: (){
+        AppNavigator.goTo(context, CartView());
+      },
+      backgroundColor: AppColors.colorButton,
+      child: Icon(Icons.shopping_cart_outlined,color: AppColors.textColorPrimary,),),
       backgroundColor: AppColors.textColorPrimary,
       bottomNavigationBar: NavigationBar(
         height: 60,
@@ -72,6 +79,6 @@ class _NavigationViewState extends State<NavigationView> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomeView(), HomeView(), ProfileView()];
+    return [HomeView(), ItemView(), ProfileView()];
   }
 }

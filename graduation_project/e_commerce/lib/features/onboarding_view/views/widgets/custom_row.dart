@@ -2,7 +2,6 @@ import 'package:e_commerce/core/helper/app_navigator.dart';
 import 'package:e_commerce/features/get_start_view/views/get_start_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/utils/app_colors.dart';
 import 'custom_indicator.dart';
 
@@ -59,7 +58,7 @@ class CustomRow extends StatelessWidget {
               } else {
                 AppNavigator.goTo(
                   context,
-                  GetStartView(),
+                  const GetStartView(),
                   type: NavigatorType.pushReplacement,
                 );
               }

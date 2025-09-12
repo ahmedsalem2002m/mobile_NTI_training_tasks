@@ -46,7 +46,7 @@ class GetStartView extends StatelessWidget {
                 ),
                 SizedBox(height: 20.h),
                 Text(
-                  "find it here, but it now!",
+                  "Find it here, buy it now!",
                   style: TextStyle(
                     color: AppColors.textColorSecondary,
                     fontSize: 14.sp,
@@ -58,18 +58,25 @@ class GetStartView extends StatelessWidget {
                   width: double.infinity,
                   height: 55,
                   color: AppColors.colorButton,
-                  child: DefaultBtn(titleButton: "Login",onPressed:(){
-                    AppNavigator.goTo(context, LoginView());
-                  }),
+                  child: DefaultBtn(
+                    titleButton: "Login",
+                    onPressed: () {
+                      AppNavigator.goTo(context, const LoginView());
+                    },
+                  ),
                 ),
                 SizedBox(height: 15.h),
                 Container(
                   width: double.infinity,
                   height: 55,
                   color: AppColors.textColorPrimary,
-                  child: DefaultBtn(titleButton: "Register", textColor: false,onPressed: (){
-                    AppNavigator.goTo(context, RegisterView());
-                  },),
+                  child: DefaultBtn(
+                    titleButton: "Register",
+                    textColor: false,
+                    onPressed: () {
+                      AppNavigator.goTo(context, const RegisterView());
+                    },
+                  ),
                 ),
                 SizedBox(height: 15.h),
               ],

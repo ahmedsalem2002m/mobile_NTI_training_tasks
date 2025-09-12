@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:e_commerce/features/login_view/views/login_view.dart';
+import 'package:e_commerce/core/helper/app_navigator.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -40,10 +43,10 @@ class ProfileView extends StatelessWidget {
               SizedBox(height: 24.h),
 
               // List of items
-              buildProfileItem(icon: Icons.person_outline, text: 'My Profile'),
-              buildProfileItem(icon: Icons.shopping_bag_outlined, text: 'My Orders'),
-              buildProfileItem(icon: Icons.favorite_border, text: 'My Favorites'),
-              buildProfileItem(icon: Icons.settings_outlined, text: 'Settings'),
+              buildProfileItem(context, icon: Icons.person_outline, text: 'My Profile'),
+              buildProfileItem(context, icon: Icons.shopping_bag_outlined, text: 'My Orders'),
+              buildProfileItem(context, icon: Icons.favorite_border, text: 'My Favorites'),
+              buildProfileItem(context, icon: Icons.settings_outlined, text: 'Settings'),
 
               // Divider
               Padding(
@@ -52,7 +55,7 @@ class ProfileView extends StatelessWidget {
               ),
 
               // Log out
-              buildProfileItem(icon: Icons.logout, text: 'Log Out'),
+              buildProfileItem(context, icon: Icons.logout, text: 'Log Out'),
             ],
           ),
         ),
@@ -60,7 +63,7 @@ class ProfileView extends StatelessWidget {
     );
   }
 
-  Widget buildProfileItem({required IconData icon, required String text}) {
+  Widget buildProfileItem(BuildContext context, {required IconData icon, required String text}) {
     return ListTile(
       leading: Icon(icon, color: Colors.black),
       title: Text(
@@ -68,7 +71,20 @@ class ProfileView extends StatelessWidget {
         style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500),
       ),
       trailing: Icon(Icons.chevron_right),
-      onTap: () {
+      onTap: () async {
+        if (text == 'Log Out') {
+          // 1️⃣ مسح بيانات تسجيل الدخول
+          final prefs = await SharedPreferences.getInstance();
+          await prefs.remove('access_token');
+          // امسح أي بيانات تانية هنا إذا عندك
+
+          // 2️⃣ ارجع لشاشة تسجيل الدخول
+          AppNavigator.goTo(
+            context,
+            const LoginView(),
+            type: NavigatorType.pushReplacement,
+          );
+        }
       },
     );
   }
