@@ -15,6 +15,6 @@ UserModel? userModel;
   Widget build(BuildContext context) {
     return tasks.isEmpty
         ?  EmptyHomeView()
-        : TempHome(userModel: userModel,);
+        : FilledHomeView(userModel: userModel,);
   }
 }

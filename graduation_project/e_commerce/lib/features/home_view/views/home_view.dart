@@ -1,6 +1,7 @@
+import 'package:e_commerce/features/home_view/views/widgets/CustomImageSlider.dart';
 import 'package:e_commerce/features/home_view/views/widgets/category_item.dart';
+import 'package:e_commerce/features/home_view/views/widgets/custcarouselslider.dart';
 import 'package:e_commerce/features/home_view/views/widgets/reco_view.dart';
-import 'package:e_commerce/features/home_view/views/widgets/slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,97 +39,110 @@ class HomeView extends StatelessWidget {
             },
             child: SingleChildScrollView(
               physics: AlwaysScrollableScrollPhysics(),
-              child: Padding(
-                padding: AppPaddings.appPaddingPrimary,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 6.h),
-                    DefaultTextFormField(
-                      prefixIcon: Icon(Icons.search),
-                      controller: TextEditingController(),
-                      hintText: 'Search any Product',
-                    ),
-                    SizedBox(height: 12.h),
-                    Text(
-                      "All Featured",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.black,
-                      ),
-                    ),
-                    SizedBox(height: 16.h),
-
-                    if (state is CategoryLoading)
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 30.h),
-                          child: CircularProgressIndicator(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: AppPaddings.appPaddingPrimary,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 6.h),
+                        DefaultTextFormField(
+                          prefixIcon: Icon(Icons.search),
+                          controller: TextEditingController(),
+                          hintText: 'Search any Product',
                         ),
-                      )
-                    else if (categories.isEmpty)
-                      Center(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20.h),
-                          child: Text(
-                            "No Category",
-                            style: TextStyle(
-                              fontSize: 16.sp,
-                              color: Colors.grey,
-                            ),
+                        SizedBox(height: 12.h),
+                        Text(
+                          "All Featured",
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.black,
                           ),
                         ),
-                      )
-                    else
-                      SizedBox(
-                        height: 100.h,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: categories.length,
-                          itemBuilder: (context, index) {
-                            final category = categories[index];
-                            return CategoryItem(
-                              onTap: () {
-                                cubit.selectCategory(category);
-                              },
-                              categoryModel: category,
-                            );
-                          },
+                        SizedBox(height: 16.h),
+                      ],
+                    ),
+                  ),
+                  if (state is CategoryLoading)
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 30.h),
+                        child: CircularProgressIndicator(),
+                      ),
+                    )
+                  else if (categories.isEmpty)
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 20.h),
+                        child: Text(
+                          "No Category",
+                          style: TextStyle(
+                            fontSize: 16.sp,
+                            color: Colors.grey,
+                          ),
                         ),
                       ),
-                    SizedBox(height: 12.h),
-                    CustomImageSlider(),
-                    SizedBox(height: 12.h),
-                    Text(
-                      "Recommended",
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.black,
+                    )
+                  else
+                    SizedBox(
+                      height: 100.h,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: categories.length,
+                        itemBuilder: (context, index) {
+                          final category = categories[index];
+                          return CategoryItem(
+                            onTap: () {
+                              cubit.selectCategory(category);
+                            },
+                            categoryModel: category,
+                          );
+                        },
                       ),
                     ),
-                    SizedBox(height: 12.h),
+                  SizedBox(height: 12.h),
+                  CustomImageSlider(),
+                  SizedBox(height: 12.h),
+                  Padding(
+                    padding: AppPaddings.appPaddingPrimary,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
 
-                    if (state is CategoryProductsSuccess)
-                      state.products.isEmpty
-                          ? Center(
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(vertical: 20.h),
-                                child: Text(
-                                  "No Products",
-                                  style: TextStyle(
-                                    fontSize: 16.sp,
-                                    color: Colors.grey,
-                                  ),
+                        Text(
+                          "Recommended",
+                          style: TextStyle(
+                            fontSize: 18.sp,
+                            fontWeight: FontWeight.w600,
+                            color: AppColors.black,
+                          ),
+                        ),
+                        SizedBox(height: 12.h),
+
+                        if (state is CategoryProductsSuccess)
+                          state.products.isEmpty
+                              ? Center(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20.h),
+                              child: Text(
+                                "No Products",
+                                style: TextStyle(
+                                  fontSize: 16.sp,
+                                  color: Colors.grey,
                                 ),
                               ),
-                            )
-                          : ProductGridView(products: state.products)
-                    else
-                      const SizedBox(),
-                  ],
-                ),
+                            ),
+                          )
+                              : ProductGridView(products: state.products)
+                        else
+                          const SizedBox(),
+                      ],
+                    ),
+                  )
+                ],
               ),
             ),
           );

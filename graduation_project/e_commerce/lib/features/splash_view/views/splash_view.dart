@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:e_commerce/core/helper/app_navigator.dart';
 import 'package:e_commerce/features/login_view/views/login_view.dart';
 import 'package:e_commerce/features/onboarding_view/views/onboarding_view.dart';
 import 'package:e_commerce/navigation_view.dart';
@@ -27,20 +28,12 @@ class _SplashViewState extends State<SplashView> {
     final token = prefs.getString('access_token');
 
     if (!isOnboardingDone) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const OnboardingView()),
-      );
+      AppNavigator.goTo(context, OnboardingView(),type: NavigatorType.pushAndRemoveUntil);
     } else if (token == null) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const LoginView()),
-      );
+      AppNavigator.goTo(context, LoginView(),type: NavigatorType.pushAndRemoveUntil);
+
     } else {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const NavigationView()),
-      );
+      AppNavigator.goTo(context, NavigationView(),type: NavigatorType.pushAndRemoveUntil);
     }
   }
 

@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 
-import '../../../../core/helper/network/api_helper.dart';
-import '../../../../core/helper/network/api_response.dart';
-import '../../../../core/helper/network/end_point.dart';
+import '../../../../core/network/api_helper.dart';
+import '../../../../core/network/api_response.dart';
+import '../../../../core/network/end_point.dart';
 
 
 class RegisterRepo{

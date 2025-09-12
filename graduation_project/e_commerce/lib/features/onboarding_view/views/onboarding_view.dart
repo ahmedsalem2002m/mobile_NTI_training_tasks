@@ -80,7 +80,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               ],
             ),
           ),
-          CustomRow(index: index, controller: pageController),
+          CustomRow(index: index, controller: pageController,context: context,),
           SizedBox(height: 24.h),
         ],
       ),

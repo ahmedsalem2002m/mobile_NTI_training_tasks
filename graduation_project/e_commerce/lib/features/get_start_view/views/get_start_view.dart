@@ -61,7 +61,7 @@ class GetStartView extends StatelessWidget {
                   child: DefaultBtn(
                     titleButton: "Login",
                     onPressed: () {
-                      AppNavigator.goTo(context, const LoginView());
+                      AppNavigator.goTo(context, const LoginView(),type: NavigatorType.push);
                     },
                   ),
                 ),

@@ -22,12 +22,3 @@ class CategoryProductsSuccess extends CategoryState {
   final List<ProductModel> products;
   CategoryProductsSuccess({required this.products});
 }
-
-// class ProductsSuccess extends CategoryState {
-//   final ProductModel products;
-//
-//   ProductsSuccess({required this.products});
-// }
-// class AddFavoriteSuccess extends CategoryState {
-//
-// }

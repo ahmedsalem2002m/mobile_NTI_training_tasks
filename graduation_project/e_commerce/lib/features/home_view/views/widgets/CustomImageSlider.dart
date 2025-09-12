@@ -1,5 +1,8 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'custcarouselslider.dart';
 
 class CustomImageSlider extends StatefulWidget {
   const CustomImageSlider({super.key});
@@ -23,28 +26,19 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
     return Column(
       children: [
         SizedBox(
-          height: 180.h,
-          child: PageView.builder(
-            controller: _pageController,
-            onPageChanged: (index) {
+          height: 240.h,
+          child:Custcarouselslider(
+            index: (ind,hh){
               setState(() {
-                _currentIndex = index;
+              _currentIndex = ind;
               });
             },
-            itemCount: images.length,
-            itemBuilder: (context, index) {
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(10.r),
-                child: Image.asset(
-                  images[index],
-                  fit: BoxFit.cover,
-                  width: double.infinity,
-                ),
-              );
-            },
-          ),
+            items: [
+            "assets/images/slider.jpg",
+            "assets/images/slider.jpg",
+            "assets/images/slider.jpg",
+          ] ,) ,
         ),
-        SizedBox(height: 10.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(images.length, (index) {
@@ -56,7 +50,7 @@ class _CustomImageSliderState extends State<CustomImageSlider> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: _currentIndex == index
-                    ? Colors.blue
+                    ? AppColors.colorButton
                     : Colors.grey.withOpacity(0.5),
               ),
             );

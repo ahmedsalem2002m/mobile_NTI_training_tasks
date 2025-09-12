@@ -46,18 +46,6 @@ class ApiResponse {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   static String _handleDioError(DioException error) {
     switch (error.type) {
       case DioExceptionType.connectionTimeout:
@@ -83,7 +71,7 @@ class ApiResponse {
     if (response.data is Map<String, dynamic>) {
       if (response.data["message"] != null)
       {
-        print("----- Handle Server Error ${response.data["message"]}");
+       // print("----- Handle Server Error ${response.data["message"]}");
         return response.data["message"] ;
       }
       return "An error occurred.";

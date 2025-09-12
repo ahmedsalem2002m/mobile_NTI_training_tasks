@@ -1,5 +1,9 @@
+import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../core/helper/app_navigator.dart';
+import '../../../core/widgets/default_btn.dart';
 
 class CartView extends StatelessWidget {
   CartView({super.key});
@@ -27,15 +31,20 @@ class CartView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double total = products.fold(
-        0, (sum, item) => sum + (item['price'] as double)); // إجمالي السعر
-
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Shopping List'),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
+        backgroundColor: AppColors.textColorPrimary,
+        title: Text(
+          'Cart',
+          style: TextStyle(fontWeight: FontWeight.w500),
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          onPressed: () {
+            AppNavigator.goBack(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.r),
@@ -135,21 +144,11 @@ class CartView extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(
+            Container(
               width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.pink,
-                  padding: EdgeInsets.symmetric(vertical: 16.h),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.r)),
-                ),
-                onPressed: () {},
-                child: Text(
-                  "Place Order",
-                  style: TextStyle(fontSize: 16.sp, color: Colors.white),
-                ),
-              ),
+              height: 55,
+              color: AppColors.colorButton,
+              child: DefaultBtn(titleButton: "Place Order",),
             ),
             SizedBox(height: 16.h),
           ],

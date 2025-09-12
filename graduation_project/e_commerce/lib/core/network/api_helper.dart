@@ -30,11 +30,11 @@ class ApiHelper
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          print("--- Response : ${response.data.toString()}");
+         // print("--- Response : ${response.data.toString()}");
           return handler.next(response);
         },
         onError: (DioException error, handler) async {
-          print("--- Error : ${error.response?.data.toString()}");
+          //print("--- Error : ${error.response?.data.toString()}");
           //ApiResponse apiResponse = ApiResponse.fromError(error);
           if(error.response?.data['message'].contains('expired'))
           {

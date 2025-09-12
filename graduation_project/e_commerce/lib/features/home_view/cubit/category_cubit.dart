@@ -38,28 +38,5 @@ class CategoryCubit extends Cubit<CategoryState>
     emit(CategoryProductsSuccess(products: selectedCategoryProducts));
   }
 
-// getProducts()async
-  // {
-  //   HomeRepo homeRepo = HomeRepo();
-  //   emit(MenuLoading());
-  //   var response = await homeRepo.getProducts();
-  //   response.fold(
-  //           (error)=> emit(MenuError(error: error)),
-  //           (products)=>emit(ProductsSuccess(products: products))
-  //   );
-  //
-  // }
-  //
-  //
-  // addFavorite(int productId)async
-  // {
-  //   HomeRepo homeRepo = HomeRepo();
-  //   emit(MenuLoading());
-  //   var response = await homeRepo.addFavorite(productId: productId);
-  //   response.fold(
-  //           (error)=> emit(MenuError(error: error)),
-  //           (unit)=>emit(AddFavoriteSuccess())
-  //   );
-  //
-  // }
+
 }

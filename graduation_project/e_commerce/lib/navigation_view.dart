@@ -20,7 +20,8 @@ class _NavigationViewState extends State<NavigationView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(onPressed: (){
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
         AppNavigator.goTo(context, CartView());
       },
       backgroundColor: AppColors.colorButton,
