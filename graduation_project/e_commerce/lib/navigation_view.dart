@@ -72,6 +72,6 @@ class _NavigationViewState extends State<NavigationView> {
   }
 
   List<Widget> _buildScreens() {
-    return [HomeView(), ItemView(), ProfileView()];
+    return [HomeView(), HomeView(), ProfileView()];
   }
 }

@@ -4,8 +4,8 @@ import 'package:e_commerce/core/helper/app_validator.dart';
 import 'package:e_commerce/core/utils/app_colors.dart';
 import 'package:e_commerce/core/utils/app_paddings.dart';
 import 'package:e_commerce/core/widgets/default_btn.dart';
-import 'package:e_commerce/features/home_view/views/home_view.dart';
 import 'package:e_commerce/features/login_view/cubit/login_cubit.dart';
+import 'package:e_commerce/navigation_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -37,7 +37,7 @@ class LoginView extends StatelessWidget {
               if (state is LoginSuccess) {
                 AppNavigator.goTo(
                   context,
-                  HomeView(),
+                  NavigationView(),
                   type: NavigatorType.pushReplacement,
                 );
               } else if (state is LoginError) {
